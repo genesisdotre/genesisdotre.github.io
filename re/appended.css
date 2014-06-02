@@ -1,9 +1,3 @@
-.forkit-curtain h2 {
-	line-height: 1.4em;
-	width: 80%;
-	margin: 0 auto;
-}
-
 .forkit-curtain img {
 	margin-right: 10px;
 }
@@ -13,6 +7,9 @@
 	font-size: 2em;
 	font-family: "Verdana";
 	font-weight: bold;
+	line-height: 2em;
+	width: 80%;
+	margin: 0 auto;
 }
 
 .forkit-curtain {

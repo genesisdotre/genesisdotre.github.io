@@ -14,9 +14,9 @@ html {
 
 
 h1, h2, h3, h4 {font-weight: 700; margin-left: -20px; margin-top: 10px;}
-	h1 {font-size: 4em; height: 160px;}
-	h2 {font-size: 1.5em;}
-	h3 {font-size: 1.3em;}
+	h1 {font-size: 2.3em;}
+	h2 {font-size: 1.3em;}
+	h3 {font-size: 1.1em;}
 
 	.info {
 		padding: 10px;
@@ -61,9 +61,6 @@ h1, h2, h3, h4 {font-weight: 700; margin-left: -20px; margin-top: 10px;}
 	.cleaner {clear:both; height: 0px;}
 	.cleaner20 {clear:both; height: 0px; margin-bottom: 20px}
 
-	ul {
-		margin-left: 25px;
-	}
 
 	strong {
 		font-weight: bold;
