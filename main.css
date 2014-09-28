@@ -13,10 +13,27 @@ html {
 }
 
 
-h1, h2, h3, h4 {font-weight: 700; margin-left: -20px; margin-top: 10px;}
+h1, h2, h3, h4 {font-weight: 700; margin-top: 0px; margin-bottom: 0px;}
 	h1 {font-size: 2.3em;}
 	h2 {font-size: 1.3em;}
 	h3 {font-size: 1.1em;}
+
+h3.bull {
+	margin-left: 20px;
+}
+
+
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+	p {
+		margin-left: 20px;
+	}
+	ul {
+		margin-top: 0;
+	}
 
 	.info {
 		padding: 10px;
