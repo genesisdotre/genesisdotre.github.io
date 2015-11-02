@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>DYNAMIC BUTTON</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+
+    <a href="" id="customButton"><img src="/images/stripe.png"></a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    
+
+    <script>
+
+        // var data = {
+        //   id : "asdasdasdsa",
+        //   howmany : 123
+        // };
+
+        // $.post("http://localhost:3002/charge", data, function(response) {
+        //   console.log(response);
+
+        //   alert("Our backend processing server returned response:\r\n" + response + "\r\nwhich is as you can tell is " + (response === "OK" ? "super cool" : "not that good"));
+        // });
+
+      var howmany; // LOL... Should be how much (LOL)
+
+      var handler = StripeCheckout.configure({
+        key: 'pk_test_gorhMMGRx3KOzCuhkkwX6iah',
+        image: '/images/genesis.png',
+        locale: 'auto',
+        token: function(token) {
+          console.log(token);
+
+          var data = {
+            id : token.id,
+            howmany : howmany
+          };
+
+          $.post("http://localhost:3002", data, function(response) {
+            console.log(response);
+
+            alert("Our backend processing server returned response:\r\n" + response + "\r\nwhich is as you can tell is " + (response === "OK" ? "super cool" : "not that good"));
+          });
+
+        }
+      });
+
+      $('#customButton').on('click', function(e) {
+        if (howmany) {
+          location.reload(); // SOMETHING WENT WRONG --- initially howmany should be undefined
+        }
+
+        // Open Checkout with further options
+        handler.open({
+          name: 'Michal Stefanow Ltd',
+          description: '2 widgets',
+          currency: "usd",
+          amount: 50
+        });
+        e.preventDefault();
+      });
+
+      // Close Checkout on page navigation
+      $(window).on('popstate', function() {
+        handler.close();
+      });
+    </script>
+  </body>
+</html>
