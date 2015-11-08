@@ -4,144 +4,27 @@
   <meta charset="UTF-8">
     <title>genesis.re</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <style>
-      html    { background: url(https://i.imgur.com/HFDc8be.jpg) no-repeat center center fixed; background-size: cover; font-size: 1.3em;}
-      *       { font-family: monospace; }
-      a       { color: yellow; }
-      article { background-color: rgba(0,0,0,0.75); padding: 20px; position: absolute; bottom: 10px; right: 10px;}
-      section { border: 3px solid white; padding: 15px; color: white;}
-      #stripe-form { height: 35px; }
-      #stripe-button {
-        box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
-        color: rgb(255, 255, 255);
-        cursor: pointer;
-        display: block;
-        height: 30px;
-        min-height: 30px;
-        position: relative;
-        text-align: center;
-        text-shadow: rgba(0, 0, 0, 0.247059) 0px -1px 0px;
-        width: 140px;
-        align-self: flex-start;
-        perspective-origin: 58.5312px 15px;
-        transform-origin: 58.5312px 15px;
-        background: rgb(18, 117, 255) linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228)) repeat scroll 0% 0% / auto padding-box border-box;
-        border: 0px none rgb(255, 255, 255);
-        border-radius: 4px 4px 4px 4px;
-        font: normal normal bold normal 14px / 30px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        outline: rgb(255, 255, 255) none 0px;
-        padding: 0px 12px;
-        text-decoration: none;
-      }
-    </style>
+    <script src="www/js/animation.js"></script>
   </head>
-  <body>
-    <article>
-      
-      <section>
+  <body ng-app="app">
+    <canvas id="animation"></canvas>
+    <script>animation()();</script>
 
-        <img src="images/websummit.png" width="200"><br><br>
+    <article ng-view></article>
 
-        <span class="payments">How much equity?</span><br><br>
-
-        <span id="thankyou" style="display:none">Thank you so much!<br>That is more than awesome.<br>You are the winner!</span>
-        <span id="error" style="display:none">Some error. <a href="javascript:location.reload()">Reload</a></span>
-
-        <input type="range" min="0.1" max="5" step="0.1" value="1" id="equity-slider" class="payments"><br>
-        <span id="equity-value" style="width: 40px; display:inline-block" class="payments"></span>
-        <span id="equity-cost" class="payments"></span>
-
-        <br><br>
-
-        <a href="" id="stripe-button" class="payments"><span style="display: block; min-height: 30px;">Pay with Card</span></a>
-
-        <br>
-
-        <form name="_xclick" action="https://www.paypal.com/uk/cgi-bin/webscr" method="post" class="payments">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="email@genesis.re">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="item_name" value="" id="paypal-name">
-          <input type="hidden" name="amount" value="" id="paypal-amount">
-          <input type="hidden" name="no_shipping" value="1">
-          <input type="image" src="/images/paypal.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" style="height:40px">
-        </form>
-
-        <br>
-
-        <a href="http://genesis.re/wiki/">genesis.re/wiki</a>
-
-      </section>
-
-    </article>
+    <link rel="stylesheet" href="www/css/main.css">
+    <link rel="stylesheet" href="www/css/normalize.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
-    <script>
-      var valString;
-      var valNumber;
-
-      $("#equity-slider").on("change", function() {
-        valString = $(this).val();
-        valNumber = parseFloat(valString);
-        $("#equity-value").html(valNumber.toFixed(1) + "%");
-        $("#equity-cost").html("$" + (valNumber * 10000));
-
-        $("#paypal-name").attr("value", valString + "% equity");
-        $("#paypal-amount").attr("value", valNumber * 10000);
-      }).trigger("change");
-
-      var handler = StripeCheckout.configure({
-        key: 'pk_live_2DAE0pRgfhU4eH7NxiQ4jLbD',
-        //key: 'pk_test_gorhMMGRx3KOzCuhkkwX6iah',
-        image: '/images/genesis.png',
-        locale: 'auto',
-        token: function(token) {
-          console.log(token);
-
-          var data = {
-            id : token.id,
-            howmany : valNumber * 1000000
-          };
-
-          //$.post("http://localhost:3002/charge", data, function(response) {
-          $.post("https://genesis-charge.herokuapp.com/charge", data, function(response) {
-            console.log(response);
-
-            // alert(response + "\r\nwhich is as you can tell is " + (response === "OK" ? "super cool" : "not that good"));
-
-            $('.payments').css({visibility: "hidden"});
-
-            if(response === "OK") {
-              $("#thankyou").show();
-            } else {
-              $("#error").show();
-            }
-
-          });
-
-        }
-      });
-
-      $('#stripe-button').on('click', function(e) {
-        // Open Checkout with further options
-        handler.open({
-          name: 'genesis.re (Web Summit)',
-          description: valNumber.toFixed(1) + "% equity",
-          currency: "usd",
-          amount: valNumber * 1000000
-        });
-        e.preventDefault();
-      });
-
-      // Close Checkout on page navigation
-      $(window).on('popstate', function() {
-        handler.close();
-      });
+    <script src="www/js/main.js"></script>
+    <script src="www/js/controllers/index.js"></script>
+    <script src="www/js/controllers/equity.js"></script>
 
 
-    </script>
   </body>
 </html>
