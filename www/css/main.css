@@ -1,8 +1,14 @@
-/*html    { background: url(https://i.imgur.com/HFDc8be.jpg) no-repeat center center fixed; background-size: cover; font-size: 1.3em;}*/
-*       { font-family: monospace; }
-a       { color: yellow; }
-article { background-color: rgba(0,0,0,0.75); padding: 20px; position: absolute; bottom: 10px; right: 10px;}
-section { border: 3px solid white; padding: 15px; color: white;}
+#main {
+  position: absolute;
+  top: 0;
+}
+
+.tile {
+  width: 200px;
+  height: 200px;
+  background: rgba(123, 234, 123, 0.5);
+}
+
 #stripe-form { height: 35px; }
 #stripe-button {
   box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;

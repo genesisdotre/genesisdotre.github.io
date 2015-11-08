@@ -7,10 +7,24 @@
     <script src="www/js/animation.js"></script>
   </head>
   <body ng-app="app">
-    <canvas id="animation"></canvas>
-    <script>animation()();</script>
 
-    <article ng-view></article>
+    <div id="outer"> 
+      <div id="canvas_container"> 
+        <canvas id="animation"></canvas> <!-- code taken from: http://jsbin.firejune.com/Voronoi -->
+      </div> 
+    </div> 
+    
+    <script>
+      var width = document.documentElement.clientWidth;
+      var height = document.documentElement.clientHeight;
+      var canvas = document.getElementById("animation");
+      canvas.setAttribute("width", width);
+      canvas.setAttribute("height", height);
+
+      // animation()();
+    </script>
+
+    <div id="main" ng-view></div>
 
     <link rel="stylesheet" href="www/css/main.css">
     <link rel="stylesheet" href="www/css/normalize.css">
@@ -22,7 +36,7 @@
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
     <script src="www/js/main.js"></script>
-    <script src="www/js/controllers/index.js"></script>
+    <script src="www/js/controllers/main.js"></script>
     <script src="www/js/controllers/equity.js"></script>
 
 
