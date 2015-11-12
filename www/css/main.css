@@ -1,18 +1,50 @@
-#main {
-  position: absolute;
-  top: 0;
+html {
+  box-sizing: border-box;
 }
-
-.tile {
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  background: url(https://i.imgur.com/HFDc8be.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+#main {
+  background: rgba(0, 0, 0, 0.75);
+  max-width: 850px;
+  margin: 0 auto;
+}
+.tiles {
+  display: inline-block;
+  padding: 5px 0;
+}
+.tiles .tile {
+  position: relative;
   width: 200px;
   height: 200px;
+  padding: 5px;
   background: rgba(123, 234, 123, 0.5);
+  float: left;
+  margin: 5px 10px 5px 0;
 }
-
-#stripe-form { height: 35px; }
+.tiles .tile:nth-of-type(4n+1) {
+  margin-left: 10px;
+}
+.tiles .tile .title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.tiles .tile .title a {
+  text-decoration: none;
+}
+#stripe-form {
+  height: 35px;
+}
 #stripe-button {
   box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   cursor: pointer;
   display: block;
   height: 30px;
@@ -24,11 +56,11 @@
   align-self: flex-start;
   perspective-origin: 58.5312px 15px;
   transform-origin: 58.5312px 15px;
-  background: rgb(18, 117, 255) linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228)) repeat scroll 0% 0% / auto padding-box border-box;
-  border: 0px none rgb(255, 255, 255);
+  background: #1275ff linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4) repeat scroll 0% 0% auto padding-box border-box;
+  border: 0px none #ffffff;
   border-radius: 4px 4px 4px 4px;
   font: normal normal bold normal 14px / 30px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  outline: rgb(255, 255, 255) none 0px;
+  outline: #ffffff none 0px;
   padding: 0px 12px;
   text-decoration: none;
 }

@@ -5,6 +5,10 @@ app.config(function ($routeProvider) {
     .when('/', {
       templateUrl: 'www/partials/main.html',
       controller: 'MainCtrl'
+    })    
+    .when('/equity', {
+      templateUrl: 'www/partials/equity.html',
+      controller: 'EquityCtrl'
     })
     .otherwise({
       redirectTo: '/'
@@ -13,4 +17,10 @@ app.config(function ($routeProvider) {
 
 app.run(function() {
 
+});
+
+app.filter('safe', function($sce){
+  return function(text) {
+    return $sce.trustAsHtml(text);
+  };
 });

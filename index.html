@@ -8,23 +8,34 @@
   </head>
   <body ng-app="app">
 
+    <!--
     <div id="outer"> 
       <div id="canvas_container"> 
-        <canvas id="animation"></canvas> <!-- code taken from: http://jsbin.firejune.com/Voronoi -->
+        <canvas id="animation"></canvas>
       </div> 
     </div> 
+    -->
     
     <script>
-      var width = document.documentElement.clientWidth;
-      var height = document.documentElement.clientHeight;
-      var canvas = document.getElementById("animation");
-      canvas.setAttribute("width", width);
-      canvas.setAttribute("height", height);
 
+      // code taken from: http://jsbin.firejune.com/Voronoi
+      // var width = document.documentElement.clientWidth;
+      // var height = document.documentElement.clientHeight;
+      // var canvas = document.getElementById("animation");
+      // canvas.setAttribute("width", width);
+      // canvas.setAttribute("height", height);
       // animation()();
     </script>
 
-    <div id="main" ng-view></div>
+
+
+    <div id="main">
+      <a href="#/">
+        <h1><img src="www/images/genesis-logo.png">genesis.re</h1>
+      </a>
+      <h3>long-term sustainability and resilience</h3>
+      <div ng-view></div>
+    </div>
 
     <link rel="stylesheet" href="www/css/main.css">
     <link rel="stylesheet" href="www/css/normalize.css">
@@ -38,7 +49,13 @@
     <script src="www/js/main.js"></script>
     <script src="www/js/controllers/main.js"></script>
     <script src="www/js/controllers/equity.js"></script>
+    <script src="www/js/services/items.js"></script>
 
+
+    <script>
+      /*jslint evil: true */
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+    </script>
 
   </body>
 </html>
