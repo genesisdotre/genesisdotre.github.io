@@ -49,7 +49,7 @@ app.factory("itemsService", function() {
     {
       url:  "http://genesis.re/cruitment",
       name: "Recruitment Agency",
-      desc: "Taking advantage of favourable market conditions."
+      desc: "Taking advantage of the favourable market conditions."
     },    
     {
       url:  "http://wardyworks.co.uk",
