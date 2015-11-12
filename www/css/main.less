@@ -20,8 +20,14 @@ html {
   background-size: cover;
 }
 
-body {
+body.aligned {
   height: 100vh;
+
+  article {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 * {
@@ -46,10 +52,6 @@ article {
   background: rgba(0, 0, 0, 0.75);
   max-width: 850px;
   margin: 0 auto;
-
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 
   header {
     padding: 20px;

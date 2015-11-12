@@ -15,7 +15,19 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.run(function() {
+app.run(function($timeout, $window) {
+
+  var adjustAlignment = function() {
+    if( $("article").height() < $($window).height()) {
+      $("body").addClass("aligned");
+    } else {
+      $("body").removeClass("aligned");
+    }
+  };
+
+  $timeout(adjustAlignment, 200);
+
+  $($window).on("resize", adjustAlignment);
 
 });
 
