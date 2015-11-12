@@ -1,3 +1,11 @@
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
 html {
   box-sizing: border-box;
 }
@@ -10,10 +18,35 @@ html {
   background: url(https://i.imgur.com/HFDc8be.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-#main {
+* {
+  color: white;
+}
+article {
   background: rgba(0, 0, 0, 0.75);
   max-width: 850px;
   margin: 0 auto;
+}
+article a {
+  color: white;
+  text-decoration: none;
+}
+article a header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  margin: 15px 0 0 15px;
+}
+article a header img.logo {
+  float: left;
+  margin-right: 20px;
+  height: 80px;
+}
+article a header h1 {
+  margin-top: 0;
+}
+article a header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .tiles {
   display: inline-block;
@@ -23,21 +56,31 @@ html {
   position: relative;
   width: 200px;
   height: 200px;
-  padding: 5px;
-  background: rgba(123, 234, 123, 0.5);
   float: left;
   margin: 5px 10px 5px 0;
+  color: white;
 }
 .tiles .tile:nth-of-type(4n+1) {
   margin-left: 10px;
 }
-.tiles .tile .title {
+.tiles .tile .tile-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+}
+.tiles .tile .tile-content .title {
   font-size: 1.1em;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
-.tiles .tile .title a {
+.tiles .tile .tile-content .title a {
+  color: white;
   text-decoration: none;
+  border-bottom: 3px solid white;
+  transition: all 500ms ease-out;
+}
+.tiles .tile .tile-content .title a:hover {
+  color: grey;
+  border-bottom: 3px solid grey;
 }
 #stripe-form {
   height: 35px;

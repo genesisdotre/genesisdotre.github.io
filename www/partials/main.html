@@ -1,6 +1,8 @@
 <div class="tiles">
   <div class="tile" ng-repeat="item in items">
-    <div class="title"><a href="{{item.url}}">{{item.name}}</a></div>
-    <div class="desc" ng-bind-html="item.desc | safe"></div>
+    <div class="tile-content">
+      <div class="title"><a href="{{item.url}}">{{item.name}}</a></div>
+      <div class="desc" ng-bind-html="item.desc | safe"></div>
+    </div>
   </div>
 </div>
