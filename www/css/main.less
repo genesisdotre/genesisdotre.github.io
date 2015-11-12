@@ -28,40 +28,50 @@ body {
   color: white;
 }
 
+//// MIXINS
+.a-anim() {
+  a {
+    text-decoration: none;
+    border-bottom: 3px solid white;
+    transition: all 500ms ease-out;
+
+    &:hover {
+      color: grey;
+      border-bottom: 3px solid grey;
+    }
+  }
+}
+
 article {
   background: rgba(0, 0, 0, 0.75);
   max-width: 850px;
   margin: 0 auto;
 
-  a {
+  header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    margin: 15px 0 0 15px;
     color: white;
     text-decoration: none;
 
-    header {
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      margin: 15px 0 0 15px;
-
-      img.logo {
-        float: left;
-        margin-right: 20px;
-        height: 80px;
-      }
-      h1 {
-        margin-top: 0;
-      }
-      h3 {
-        margin-top: 0;
-        margin-bottom: 0
-      }
+    img.logo {
+      float: left;
+      margin-right: 20px;
+      height: 80px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0
     }
   }
 }
 
-
 .tiles{
-  display: inline-block; // so many years in business, still haven't learnt how to use it properly...
+  display: inline-block;
   padding: 5px 0;
 
   .tile {
@@ -83,46 +93,52 @@ article {
         font-size: 1.1em;
         font-weight: bold;
         margin-bottom: 10px;
-        a {
-          color: white;
-          text-decoration: none;
-          border-bottom: 3px solid white;
-          transition: all 500ms ease-out;
-
-          &:hover {
-            color: grey;
-            border-bottom: 3px solid grey;
-          }
-        }
+        .a-anim();
       }
 
       .desc {
+        .a-anim();
 
+        strong {
+          font-size: 1.2em;
+        }
       }
     }
   }
 }
 
-#stripe-form { height: 35px; }
-#stripe-button {
-  box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  display: block;
-  height: 30px;
-  min-height: 30px;
-  position: relative;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.247059) 0px -1px 0px;
-  width: 140px;
-  align-self: flex-start;
-  perspective-origin: 58.5312px 15px;
-  transform-origin: 58.5312px 15px;
-  background: rgb(18, 117, 255) linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228)) repeat scroll 0% 0% / auto padding-box border-box;
-  border: 0px none rgb(255, 255, 255);
-  border-radius: 4px 4px 4px 4px;
-  font: normal normal bold normal 14px / 30px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  outline: rgb(255, 255, 255) none 0px;
-  padding: 0px 12px;
-  text-decoration: none;
+.equity {
+  display: inline-block;
+  padding: 15px;
+  margin: 15px;
+  background: rgba(0, 0, 0, 0.5);
+
+  strong {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  #stripe-form { height: 35px; }
+  #stripe-button {
+    box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    min-height: 30px;
+    position: relative;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.247059) 0px -1px 0px;
+    width: 140px;
+    align-self: flex-start;
+    perspective-origin: 58.5312px 15px;
+    transform-origin: 58.5312px 15px;
+    background: rgb(18, 117, 255) linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228));
+    border: 0px none rgb(255, 255, 255);
+    border-radius: 4px 4px 4px 4px;
+    font: normal normal bold normal 14px / 30px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 0px 12px;
+    text-decoration: none;
+  }
 }

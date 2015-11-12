@@ -17,7 +17,7 @@ app.controller("EquityCtrl", function() {
     var handler = StripeCheckout.configure({
       key: 'pk_live_2DAE0pRgfhU4eH7NxiQ4jLbD',
       //key: 'pk_test_gorhMMGRx3KOzCuhkkwX6iah',
-      image: '/images/genesis.png',
+      image: 'www/images/genesis.png',
       locale: 'auto',
       token: function(token) {
         console.log(token);

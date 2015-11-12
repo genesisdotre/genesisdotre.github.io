@@ -4,17 +4,18 @@ app.factory("itemsService", function() {
     {
       url:  "http://genesis.re/wiki",
       name: "Wiki: Main Page",
-      desc: "Entry point for the wiki."
+      desc: "<p><strong>genesis</strong> as in source, beginning, origin</p>" +
+            "<p><strong>re</strong> as in renew, reset, restart, reboot, rejuvenate</p>" 
     },    
     {
       url:  "http://genesis.re/wiki#Vision",
       name: "Wiki: Vision",
-      desc: "We are on the mission.<br>There is a planet that needs saving."
+      desc: "<p>We are on the mission.</p><p>There is a planet that needs saving.</p>"
     },
     {
       url:  "http://genesis.re/wiki#Core_Values",
       name: "Wiki: Core Values",
-      desc: "Constitution.<br>Operating system.<br>Basic principles."
+      desc: "<p>Constitution.</p><p>Operating system.</p><p>Basic principles.</p>"
     },
     {
       url:  "http://genesis.re/wiki#Job",
@@ -26,12 +27,12 @@ app.factory("itemsService", function() {
     {
       url:  "http://MichalStefanow.com",
       name: "MichalStefanow.com",
-      desc: "Personal website.<br>Some pictures and links to social media profiles."
+      desc: "<p>Personal website.</p><p>Some pictures and links to social media profiles.</p>"
     },
     {
       url:  "http://iamthespecialist.com",
       name: "iamthespecialist.com",
-      desc: "Technical blog.<br>The name is pretentious but I enjoy being controversial."
+      desc: "<p>Technical blog.</p><p>The name is pretentious but I enjoy being controversial.</p>"
     },
     {
       url:  "https://mailhustle.com",
@@ -58,14 +59,14 @@ app.factory("itemsService", function() {
     {
       url:  "#equity",
       name: "Equity investment",
-      desc: "Land and infrastructure.<br>Be part of our long-term vision."
+      desc: "<p>Land and infrastructure.</p><p>Be part of our long-term vision.<p>"
     },
     {
       url:  "http://genesis.re/wiki#Contact",
       name: "Contact",
-      desc: "<a href='tel:+44 758 629 4279'>+44 758 629 4279</a><br>" +
-            "<a href='mailto:email@genesis.re'>email@genesis.re</a><br>" +
-            "Please join us on IRC and Slack channel too.."
+      desc: "<p><a href='tel:+44 758 629 4279'>+44 758 629 4279</a></p>" +
+            "<p><a href='mailto:email@genesis.re'>email@genesis.re</a></p>" +
+            "<p>Please join us on IRC and Slack channel too...</p>"
     }
   ];
 
