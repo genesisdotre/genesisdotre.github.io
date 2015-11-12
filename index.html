@@ -1,9 +1,66 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta http-equiv="refresh" content="0; url=http://genesis.re/wiki">
- </head>
- <body>
+  <head>
+  <meta charset="UTF-8">
+    <title>genesis.re</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="www/js/animation.js"></script>
+  </head>
+  <body ng-app="app">
 
- </body>
+    <!--
+    <div id="outer"> 
+      <div id="canvas_container"> 
+        <canvas id="animation"></canvas>
+      </div> 
+    </div> 
+    -->
+    
+    <script>
+
+      // code taken from: http://jsbin.firejune.com/Voronoi
+      // var width = document.documentElement.clientWidth;
+      // var height = document.documentElement.clientHeight;
+      // var canvas = document.getElementById("animation");
+      // canvas.setAttribute("width", width);
+      // canvas.setAttribute("height", height);
+      // animation()();
+    </script>
+
+
+
+    <article>
+      <a href="#/">
+        <header>
+          <img class="logo" src="www/images/genesis-logo-white.png">
+          <div style="float:left">
+            <h1>genesis.re</h1>
+            <h3>long-term sustainability and resilience</h3>
+          </div>
+        </header>
+      </a>
+      <div ng-view></div>
+    </article>
+
+    <link rel="stylesheet" href="www/css/main.css">
+    <link rel="stylesheet" href="www/css/normalize.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    <script src="www/js/main.js"></script>
+    <script src="www/js/controllers/main.js"></script>
+    <script src="www/js/controllers/equity.js"></script>
+    <script src="www/js/services/items.js"></script>
+
+
+    <script>
+      /*jslint evil: true */
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+    </script>
+
+  </body>
 </html>
