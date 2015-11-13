@@ -18,12 +18,11 @@ app.factory("itemsService", function() {
       desc: "<p>Constitution.</p><p>Operating system.</p><p>Basic principles.</p>"
     },
     {
-      url:  "http://genesis.re/wiki#Job",
-      name: "Wiki: Consultancy",
-      desc: "Working on exceptional projects to generate 10x ROI."
+      url:  "http://genesis.re/wiki#Hackbase",
+      name: "Wiki: Hackbase",
+      desc: "Creating exceptional work environment."
     },
 
-  
     {
       url:  "http://MichalStefanow.com",
       name: "MichalStefanow.com",
@@ -50,12 +49,12 @@ app.factory("itemsService", function() {
       url:  "http://genesis.re/cruitment",
       name: "Recruitment Agency",
       desc: "Taking advantage of the favourable market conditions."
-    },    
+    },  
     {
-      url:  "http://wardyworks.co.uk",
-      name: "Visionary Art",
-      desc: "Alexander Ward - author of the visionary artwork"
-    },
+      url:  "http://genesis.re/steroids",
+      name: "Startup Steroids",
+      desc: "<p>I genuinely love helping people.</p><p>Connecting the dots.</p><p>Offering my experience to grow your company on steroids</p>"
+    },    
     {
       url:  "#equity",
       name: "Equity investment",
@@ -65,8 +64,7 @@ app.factory("itemsService", function() {
       url:  "http://genesis.re/wiki#Contact",
       name: "Contact",
       desc: "<p><a href='tel:+44 758 629 4279'>+44 758 629 4279</a></p>" +
-            "<p><a href='mailto:email@genesis.re'>email@genesis.re</a></p>" +
-            "<p>Please join us on IRC and Slack channel too...</p>"
+            "<p><a href='mailto:email@genesis.re'>email@genesis.re</a></p>"
     }
   ];
 
