@@ -10,7 +10,20 @@
   </head>
   <body>
 
-    <iframe frameBorder=0 src="https://docs.google.com/document/d/1WUsQ_Kaa_tJljadPpHO2AFwvOAIqrYFS_zehUd6iCVk/pub?embedded=true"></iframe>
+    <iframe id="google-doc-iframe" srcdoc="" frameborder="0"></iframe>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $.get("https://docs.google.com/document/d/1WUsQ_Kaa_tJljadPpHO2AFwvOAIqrYFS_zehUd6iCVk/pub?embedded=true", function(html) {
+            $("#google-doc-iframe").attr("srcdoc", html);
+            setTimeout(function() {
+                $("#google-doc-iframe").contents().find('a[href^="http://"]').attr("target", "_blank");
+                $("#google-doc-iframe").contents().find('a[href^="https://"]').attr("target", "_blank");
+            }, 1000);
+        });
+    });
+    </script>  
   
   </body>
 </html>
