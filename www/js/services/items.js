@@ -2,23 +2,23 @@ app.factory("itemsService", function() {
   var items = [
 
     {
-      url:  "http://genesis.re/wiki",
+      url:  "https://gen.miraheze.org/",
       name: "Wiki: Main Page",
       desc: "<p><strong>genesis</strong> as in source, beginning, origin</p>" +
             "<p><strong>re</strong> as in renew, reset, restart, reboot, rejuvenate</p>" 
     },    
     {
-      url:  "http://genesis.re/wiki#Vision",
+      url:  "https://gen.miraheze.org/wiki/Vision",
       name: "Wiki: Vision",
       desc: "<p>We are on the mission.</p><p>There is a planet that needs saving.</p>"
     },
     {
-      url:  "http://genesis.re/wiki#Core_Values",
+      url:  "https://gen.miraheze.org/wiki/Core_Values",
       name: "Wiki: Core Values",
       desc: "<p>Constitution.</p><p>Operating system.</p><p>Basic principles.</p>"
     },
     {
-      url:  "http://genesis.re/wiki#Hackbase",
+      url:  "https://gen.miraheze.org/wiki/Hackbase",
       name: "Wiki: Hackbase",
       desc: "Creating exceptional work environment."
     },
