@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/gen
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://genesis.re
+  * I am gen (https://keybase.io/gen) on keybase.
+  * I have a public key with fingerprint 5E93 D317 0FF0 63D8 FFBA  B261 E6A7 F3B0 2CBC E2F4
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101becf9129953986daa190c21a09d8e9b51d9a2bd4babcfd7b81e3e8e29504ccf20a",
+            "fingerprint": "5e93d3170ff063d8ffbab261e6a7f3b02cbce2f4",
+            "host": "keybase.io",
+            "key_id": "e6a7f3b02cbce2f4",
+            "kid": "0101becf9129953986daa190c21a09d8e9b51d9a2bd4babcfd7b81e3e8e29504ccf20a",
+            "uid": "3b6a765ede676559e0f261b5b9e33919",
+            "username": "gen"
+        },
+        "service": {
+            "hostname": "genesis.re",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1448441069,
+    "expire_in": 157680000,
+    "prev": "2fddfa9337b335db8eea810858b5174db7be48ea59b07da9cf2a528f8ebc0edd",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.49
+Comment: https://keybase.io/crypto
+
+yMIfAnicrVJbSFRRFB2nl44lFUyIPYxL0kdW9zlzztDTykqQfjKIjNs59+w7XnTu
+THOvlsgEBfVREFIUfvSgPnpHTGUTZWU1kVREQQ9QyQ+jMjUw+7EXnStFP312fjZn
+n7XWXntxspPG+AI5F7o75gRfvC3OeXy3ud63ocodbBJonDUKkSahFkYL1DFwXL3W
+YkJEECVRomCYWJIx1hSMQowQCYuGLBERMwSYahLDRKZMpYQaJgtTJIECCGSsiaph
+mLJIhFLBtOwoJBNJy3a5rAZYYYoUFk1TDCkMmSYnyyEJQiRsKlSUDWqAbKqcWBN3
+PAY3R4kDC6w47/GLPmrvH/j/7Lt+VE6hfFBIAwYhXjQMosndUo1iUBQsYQ/oQNIm
+MeDoKNhCqlTgjQbLAC9Tb4m/j+BYzoIkcFIiGXfjRryO92tcN+FEPJ7bmPCA24Dq
+vyV0atmMB8gZDZB0rLgtRCSONFzL05RUFamqJIZwqQDbE1YSdMtDaOEQEvnx5kAD
+l5RNxkyCFSVMFUVjFAEQJIlIQzyNsMpomIKKgGiYimFGMA+BaDIyEVBDBMYEb6mt
+dlyIKNwmiXJJx4raxK3n26TutVeP9eUEfOPH+b2P5QvkTf7z3YSXub5rt/qOHX0/
+w+c/b665eaC382drbNyW55vP5g29Di7vIJMC0Wu7fwy8mfIoP1U2pLf0ncqNlRy8
++mHRXKYXdjVVGGUXy92hyodtkKkylnwuSt/fF7iEMksP7Z9Q/OzkVzRz6soHywYP
++Hrmz9iEWtM7SioL92ZPfznZlQ12Pm35DsFZ5570Rft39ce+fWxr7/BXjmQKFq0u
+PCOm2daCVXrm+cjjgbv64Oly/xHz9r7egwWJbXeSl1/0pHYubE4tnnd9/ZhX0Ysl
+V48XVQ3fe7KibPK7ocErsVP5x1r2VDS/GS4+sXbi7FnH1934ZDf2lyNX6Kqe3po/
+7dDh7nRFtz+Rrdvo/ALQ1EYs
+=7qZk
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/gen
+
+==================================================================
