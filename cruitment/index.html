@@ -3,32 +3,30 @@
  <head>
   <title>Recruitment</title>
   <style>
-   html, body { margin: 0;  padding: 0; overflow: hidden; }
-   iframe { margin-left: 2vw; margin-top: 2vh; height: 90vh; width: 90vw; }
-  </style>
-  
+   html, body { margin: 0;  padding: 0; }
+   #content { margin-left: 2vw; margin-top: 2vh; }
+  </style>  
  </head>
  <body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-    <iframe id="google-doc-iframe" srcdoc="" frameborder="0"></iframe>
+    <div id="content"></div>
 
     <script>
     $(function() {
         $.get("https://docs.google.com/document/d/1hp3LblczmjuxX91aBh0s09vDyy9qQbhxR12Nk2VrQuM/pub?embedded=true", function(html) {
-            var contents = $("iframe").contents();
+            var content = $("#content");
 
-            contents.find("html").html(html);
+            content.html(html);
 
             setTimeout(function() {
-                contents.find('a[href^="http://"]').attr("target", "_blank");
-                contents.find('a[href^="https://"]').attr("target", "_blank");
+                content.find('a[href^="http://"]').attr("target", "_blank");
+                content.find('a[href^="https://"]').attr("target", "_blank");
             }, 1000);
         });
     });
     </script>
-
 
  </body>
 </html>
