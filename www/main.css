@@ -1,3 +1,4 @@
+/* NORMALIZE */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
@@ -424,4 +425,36 @@ table {
 td,
 th {
   padding: 0;
+}
+
+/* NORMALIZE ENDS */
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    margin: 10px 0 0 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+  
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  transition: all 1000ms ease-out;
+  border-bottom: 3px solid white;
+}
+
+header a:hover {
+  color: yellow;
+  border-bottom: 3px solid yellow;
 }
