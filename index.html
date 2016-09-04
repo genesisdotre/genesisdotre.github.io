@@ -15,12 +15,14 @@
   </head>
   <body>
 
-    <div class="header">
-        <a href="https://genesis.re/wiki">genesis.re/wiki</a><br>
-        <div style="height:10px"></div>
-        <a href="mailto:email@genesis.re">email@genesis.re</a><br>
-        <div style="height:10px"></div>
-        hackers of planets
+    <div class="box header">
+        <a style="margin-bottom:10px; display: inline-block;" href="https://genesis.re/wiki">genesis.re/wiki</a><br>
+        <a style="margin-bottom:10px; display: inline-block;" href="mailto:email@genesis.re">email@genesis.re</a><br>
+        architecting the new planet
+    </div>
+
+    <div class="box credits">
+        artwork by <a href="https://www.facebook.com/AndroidJonesart/photos/a.153787984205.112648.153708179205/10154722439949206/?type=3&theater">Android Jones</a>
     </div>
 
     <div id="canvas">
@@ -33,6 +35,7 @@
       
       var init = true;
       var pressed = false;
+      var target; // saving the mouse down target - to be clicked after releasing... (fixing a bug with touch on mobile)
       var timeout; // after 20 seconds of inactivity we re-enable rotation... (best guess about web usability)
 
       var longitude = 0;
@@ -60,7 +63,7 @@
 
       // creation of the sphere material
       var sphereMaterial = new THREE.MeshBasicMaterial();
-      sphereMaterial.map = THREE.ImageUtils.loadTexture("http://i.imgur.com/2wzuKF1.jpg")
+      sphereMaterial.map = THREE.ImageUtils.loadTexture("http://i.imgur.com/rFpkaoX.jpg")
 
       // geometry + material = mesh (actual object)
       var sphereMesh = new THREE.Mesh(sphere, sphereMaterial);
@@ -69,7 +72,7 @@
       // listeners
       document.addEventListener("mousedown", onDocumentMouseDown, false);
       document.addEventListener("mousemove", onDocumentMouseMove, false);
-      document.addEventListener("mouseup", onDocumentMouseUp, false);      
+      document.addEventListener("mouseup", onDocumentMouseUp, false);
 
 
       document.addEventListener("touchstart", onDocumentMouseDown, false);
@@ -103,6 +106,7 @@
       function onDocumentMouseDown(event){
         event.preventDefault();
 
+        target = event.target;
         init = false;
         pressed = true;
 
@@ -124,8 +128,11 @@
         }
       }
 
-      function onDocumentMouseUp(event){
+      function onDocumentMouseUp(event) {
          pressed = false;
+         if (target === event.target && target.href) {
+           target.click();
+         }
       }
       
       
