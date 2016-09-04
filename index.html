@@ -4,26 +4,29 @@
   <meta charset="UTF-8">
     <title>✨💖✨ genesis.re</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="http://genesis.re/cmdctrl/cmdctrl.js"></script>
+    <script src="https://genesis.re/cmdctrl/cmdctrl.js"></script>
     <link rel="stylesheet" href="www/main.css">
 
-<meta property="og:title" content="genesis.re"/>
-<meta property="og:image" content="https://genesis.re/www/opengraph.jpg"/>
-<meta property="og:site_name" content="hackers of planets"/>
-<meta property="og:description" content="technology, permaculture, sustainability, community, tribe, village, enlightenment, love and light, ninjas, pirates, unicorns"/>
+    <meta property="og:title" content="genesis.re"/>
+    <meta property="og:image" content="https://genesis.re/www/opengraph.jpg"/>
+    <meta property="og:site_name" content="hackers of planets"/>
+    <meta property="og:description" content="technology, permaculture, sustainability, community, tribe, village, enlightenment, love and light, ninjas, pirates, unicorns"/>
 
   </head>
   <body>
 
-    <header>
+    <div class="header">
         <a href="https://genesis.re/wiki">genesis.re/wiki</a><br>
         <div style="height:10px"></div>
         <a href="mailto:email@genesis.re">email@genesis.re</a><br>
         <div style="height:10px"></div>
         hackers of planets
-    </header>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r69/three.min.js"></script> 
+    <div id="canvas">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script> 
     <script>
 
       THREE.ImageUtils.crossOrigin = '';
@@ -42,7 +45,7 @@
       // setting up the renderer
       renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+      document.getElementById("canvas").appendChild(renderer.domElement); // append either here or to the body
       
       // creating a new scene
       var scene = new THREE.Scene();
@@ -73,9 +76,9 @@
       document.addEventListener("touchmove", onDocumentMouseMove, false);
       document.addEventListener("touchend", onDocumentMouseUp, false);
         
-               render();
+      render();
                
-               function render(){
+      function render(){
         
         requestAnimationFrame(render);
         
@@ -94,46 +97,35 @@
 
         // calling again render function
         renderer.render(scene, camera);
-        
       }
       
       // when the mouse is pressed, we switch to manual control and save current coordinates
       function onDocumentMouseDown(event){
-
         event.preventDefault();
-
 
         init = false;
         pressed = true;
-
 
         savedX = event.targetTouches ? event.targetTouches[0].clientX : event.clientX;
         savedY = event.targetTouches ? event.targetTouches[0].clientY : event.clientY;
 
         savedLongitude = longitude;
         savedLatitude = latitude;
-
       }
 
       // when the mouse moves, if in manual contro we adjust coordinates
       function onDocumentMouseMove(event){
-
         var clientX = event.targetTouches ? event.targetTouches[0].clientX : event.clientX;
         var clientY = event.targetTouches ? event.targetTouches[0].clientY : event.clientY;
-
 
         if(pressed){
           longitude = (savedX - clientX) * 0.1 + savedLongitude;
           latitude = (clientY - savedY) * 0.1 + savedLatitude;
         }
-
       }
 
       function onDocumentMouseUp(event){
-
          pressed = false;
-
-
       }
       
       
