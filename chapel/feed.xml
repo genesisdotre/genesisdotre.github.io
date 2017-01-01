@@ -2,14 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Astral Dynamics</title>
-    <description>Another fine responsive  
-site template freebie  
-crafted by [HTML5 UP](http://html5up.net)
-</description>
-    <link>http://genesis.re/chapel/</link>
-    <atom:link href="http://genesis.re/chapel/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 31 Dec 2016 15:26:40 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Dec 2016 15:26:40 +0000</lastBuildDate>
+    <description>Converting North Wales chapel into a Pirate Ship 🌎&amp;nbsp;&amp;nbsp;🌍&amp;nbsp;&amp;nbsp;🌏</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 31 Dec 2016 23:29:55 +0000</pubDate>
+    <lastBuildDate>Sat, 31 Dec 2016 23:29:55 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
   </channel>
