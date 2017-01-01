@@ -3,10 +3,10 @@
   <channel>
     <title>Astral Dynamics</title>
     <description>Converting North Wales chapel into a Pirate Ship 🌎&amp;nbsp;&amp;nbsp;🌍&amp;nbsp;&amp;nbsp;🌏</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 31 Dec 2016 23:29:55 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Dec 2016 23:29:55 +0000</lastBuildDate>
+    <link>http://genesis.re/chapel/</link>
+    <atom:link href="http://genesis.re/chapel/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 01 Jan 2017 00:56:15 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:56:15 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
   </channel>
