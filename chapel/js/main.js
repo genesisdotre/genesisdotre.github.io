@@ -139,6 +139,14 @@
 
 			});
 
+			$('.streetView-wrapper').click(function () {
+			    $('.streetView-wrapper iframe').css("pointer-events", "auto");
+			});
+
+			$( ".streetView-wrapper" ).mouseleave(function() {
+			  $('.streetView-wrapper iframe').css("pointer-events", "none"); 
+			});
+
 
 	});
 

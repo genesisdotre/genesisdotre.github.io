@@ -2697,3 +2697,6 @@ body.is-mobile.landing #footer {
 
 .field label {
   text-align: left; }
+
+.streetView-wrapper iframe {
+  pointer-events: none; }
