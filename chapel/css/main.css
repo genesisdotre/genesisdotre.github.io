@@ -2682,7 +2682,7 @@ body.is-mobile.landing .wrapper.style4 {
 body.is-mobile.landing #footer {
   background-color: #1d242a; }
 
-#banner p {
+[data-slide] {
   display: none; }
 
 .field.half {
@@ -2700,3 +2700,17 @@ body.is-mobile.landing #footer {
 
 .streetView-wrapper iframe {
   pointer-events: none; }
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table; }
+
+.cf:after {
+  clear: both; }
+
+#one li {
+  text-align: left; }
+
+#one .icons img {
+  height: 60px; }

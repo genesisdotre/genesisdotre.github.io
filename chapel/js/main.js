@@ -121,7 +121,7 @@
 				};
 			}
 
-			$(".slide").each(function(idx, obj) { 
+			$("[data-slide]").each(function(idx, obj) { 
 				var name = "slide" + idx;
 				createGlobalFunction(name, $(obj));
 				window[name]();
