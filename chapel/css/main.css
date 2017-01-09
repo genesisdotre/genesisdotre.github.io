@@ -2712,7 +2712,12 @@ body.is-mobile.landing #footer {
 #one li {
   text-align: left; }
 
-#one .icons img {
+.icons img {
   height: 60px; }
 
-/* PLEASE */
+#banner p {
+  font-size: 1.2em;
+  margin-bottom: 5px; }
+
+#banner p strong {
+  font-weight: 900; }
