@@ -4,145 +4,197 @@
   <meta charset="UTF-8">
     <title>genesis.re 🦄</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src="https://genesis.re/cmdctrl/cmdctrl.js"></script>
-    <link rel="stylesheet" href="www/main.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lib/lightbox.min.css">
 
     <meta property="og:title" content="genesis.re 🦄"/>
     <meta property="og:image" content="https://genesis.re/www/images/metatron.png"/>
     <meta property="og:site_name" content="hackers of planets"/>
     <meta property="og:description" content="technology, permaculture, sustainability, community, tribe, village, enlightenment, love and light, ninjas, pirates, unicorns"/>
-
   </head>
   <body>
 
-    <div class="box header">
-        <a style="margin-bottom:10px; display: inline-block;" href="https://genesis.re/wiki">genesis.re/wiki</a><br>
-        <a style="margin-bottom:10px; display: inline-block;" href="mailto:email@genesis.re">email@genesis.re</a><br>
-        <span style="margin-bottom:10px; display: inline-block;">architecting the new planet</span><br>
-        supporting <a href="https://astralship.org">astralship.org</a>
+<div class="box header" id="text">
 
-    </div>
+<h1>genesis<span>.re</span></h1>
 
-    <div class="box credits">
-        artwork by <a href="https://www.facebook.com/AndroidJonesart/photos/a.153787984205.112648.153708179205/10154722439949206/?type=3&theater">Android Jones</a>
-    </div>
+<p>People become less religious and many churches are closing down.</p>
 
-    <div id="canvas">
-    </div>
+<p>We are not religious about churches, they just happen to be available for sale for a relatively small amount of money.</p>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r80/three.min.js"></script> 
-    <script>
+<p>We purchase these buildings at bargain prices:</p>
+<ul> 
+  <li>traditional home owners cannot afford acquisition and refurbishment at such scale</li>
+  <li>traditional developers are cautious due to uncertainty of commercial / residential mismatch</li>
+</ul>
 
-      THREE.ImageUtils.crossOrigin = '';
-      
-      var init = true;
-      var pressed = false;
-      var target; // saving the mouse down target - to be clicked after releasing... (fixing a bug with touch on mobile)
-      var timeout; // after 20 seconds of inactivity we re-enable rotation... (best guess about web usability)
+<p>We have a valid use case. Establishing <strong>School of the Modern Renaissance</strong> - teaching students of all ages how to use technology:</p>
+<ul>
+  <li>VR</li>
+  <li>AI</li>
+  <li>Blockchain</li>
+  <li>Making, Tools, Engineering</li>
+  <li>Web Development</li>
+</ul>
 
-      var longitude = 0;
-      var latitude = 0;
-      var savedX;
-      var savedY;
-      var savedLongitude;
-      var savedLatitude;
+<p>As well as soft skills that are most valuable in life:</p>
+<ul>
+  <li>Entrepreneurship</li>
+  <li>Communication</li>
+  <li>Cultures + Languages</li>
+  <li>Relationships</li>
+  <li>Health + Wellness + Nutrition</li>
+  <li>Concentration + Focus</li>
+</ul>
 
-      // setting up the renderer
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.getElementById("canvas").appendChild(renderer.domElement); // append either here or to the body
-      
-      // creating a new scene
-      var scene = new THREE.Scene();
-      
-      // adding a camera
-      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
-      camera.target = new THREE.Vector3(0, 0, 0);
+<p>Holistic curriculum that will ensure prosperity in the post-work era when majority of the jobs are automated.</p> 
 
-      // creation of a big sphere geometry
-      var sphere = new THREE.SphereGeometry(100, 100, 40);
-      sphere.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
+<div class="videoWrapper">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/d84fwxiWnSk" frameborder="0" allowfullscreen></iframe>
+</div>
 
-      // creation of the sphere material
-      var sphereMaterial = new THREE.MeshBasicMaterial();
-      sphereMaterial.map = THREE.ImageUtils.loadTexture("https://i.imgur.com/89m76z9.jpg")
+<p>Currently we own two buildings in the UK - <a href="https://astralship.org">astralship.org</a> and <a href="https://engedi2.org">Engedi 2.0</a> <i>(in Welsh)</i> - our intention is to replicate the model and expand globally. We believe in open-source and working on urging projects that actually matter, we do not need yet another food delivery app:</p>
+<ul>
+  <li>Global warming</li>
+  <li>Air polution</li>
+  <li>Plastic recycling</li>
+  <li>Deforestation</li>
+</ul>
 
-      // geometry + material = mesh (actual object)
-      var sphereMesh = new THREE.Mesh(sphere, sphereMaterial);
-      scene.add(sphereMesh);
-
-      // listeners
-      document.addEventListener("mousedown", onDocumentMouseDown, false);
-      document.addEventListener("mousemove", onDocumentMouseMove, false);
-      document.addEventListener("mouseup", onDocumentMouseUp, false);
+<img class="jslghtbx-thmb" src="images/church-bangor-thu.jpg"    data-jslghtbx="images/church-bangor-res.jpg"    data-jslghtbx-caption="<a href='https://www.dafyddhardy.co.uk/property/100278009590?pg=1&s-search=1&s-ttype=0&s-term=Bangor&s-radius=1&s-type=&s-bedmin=&s-bedmax=&s-pricemin=&s-pricemax=&s-lat=53.22739&s-lng=-4.129263000000037'>SOLD, subject to contract</a>">
+<img class="jslghtbx-thmb" src="images/church-engedi-thu.jpg"    data-jslghtbx="images/church-engedi-res.jpg"    data-jslghtbx-caption="<a href='http://www.dailypost.co.uk/news/north-wales-news/historic-caernarfon-chapel-sells-auction-6953093'>we own Engedi, hurray!</a>">
+<img class="jslghtbx-thmb" src="images/church-poland-thu.jpg"    data-jslghtbx="images/church-poland-res.jpg"    data-jslghtbx-caption="<a href='http://www.domiporta.pl/nieruchomosci/sprzedam-inne-izbica-kujawska-540m2/146837481'>church in Poland for £25k</a>">
+<img class="jslghtbx-thmb" src="images/church-rightmove-thu.jpg" data-jslghtbx="images/church-rightmove-res.jpg" data-jslghtbx-caption="<a href='http://www.rightmove.co.uk/property-for-sale/property-58079374.html'>Todmorden</a>">
 
 
-      document.addEventListener("touchstart", onDocumentMouseDown, false);
-      document.addEventListener("touchmove", onDocumentMouseMove, false);
-      document.addEventListener("touchend", onDocumentMouseUp, false);
-        
-      render();
-               
-      function render(){
-        requestAnimationFrame(render);
-        
-        if(init){
-          longitude += 0.1;
-        }
+<p>We appreciate that ICO and cryptocurrencies are volatile - we invest in real estate and education - chances are that some of it will preserve its value.</p>
 
-        // limiting latitude from -85 to 85 (cannot point to the sky or under your feet)
-        latitude = Math.max(-85, Math.min(85, latitude));
+<!--
+<p>Here is our logic, an illustrative example:</p>
 
-        // moving the camera according to current latitude (vertical movement) and longitude (horizontal movement)
-        camera.target.x = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.cos(THREE.Math.degToRad(longitude));
-        camera.target.y = 500 * Math.cos(THREE.Math.degToRad(90 - latitude));
-        camera.target.z = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.sin(THREE.Math.degToRad(longitude));
-        camera.lookAt(camera.target);
+<ul>
+  <li>£50k of raw materials</li>
+  <li>efficient processes</li>
+  <li>economy of the scale</li>
+  <li>creativity, passion, energy</li>
+  <li>strategic partnerships</li>
+</ul>
 
-        // calling again render function
-        renderer.render(scene, camera);
-      }
-      
-      // when the mouse is pressed, we switch to manual control and save current coordinates
-      function onDocumentMouseDown(event){
-        event.preventDefault();
+<p>We believe that £50k worth of materials and labour, when multiplied by our skills will ensure long-term prosperity of the project. 80% of the ICO proceeds goes towards core business:</p>
+<ul>
+  <li>acquiring buildings and land</li>
+  <li>materials + labour</li>
+  <li>architecture + planning</li>
+  <li>prospecting + canvassing</li>
+</ul>
 
-        target = event.target;
-        init = false;
-        pressed = true;
+<p>Remaining 20% is required to keep us in motion:</p>
+<ul>
+  <li>marketing</li>
+  <li>legal + insurance</li>
+  <li>admin + operations</li>
+  <li>consultants + contractors</li>
+</ul>
+-->
 
-        savedX = event.targetTouches ? event.targetTouches[0].clientX : event.clientX;
-        savedY = event.targetTouches ? event.targetTouches[0].clientY : event.clientY;
+<h3>Founding team</h3>
 
-        savedLongitude = longitude;
-        savedLatitude = latitude;
-      }
+<p>Working with a number of people in official and unofficial capacity, we cannot just plaster <a href="https://twitter.com/VitalikButerin/status/874523258565132292">Vitalik Buterin</a> face.</p>
 
-      // when the mouse moves, if in manual contro we adjust coordinates
-      function onDocumentMouseMove(event){
-        var clientX = event.targetTouches ? event.targetTouches[0].clientX : event.clientX;
-        var clientY = event.targetTouches ? event.targetTouches[0].clientY : event.clientY;
+<div class="person">
+  <img class="avatar" src="images/liam.jpg">
+  <div class="name">Liam Kurmos</div>
+  <div class="title">Captain of the ship</div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/liamkurmos/"><img src="images/linkedin.png"></a>
+    <a href="https://www.twitter.com/stefek99/"><img src="images/twitter.png"></a>
+  </div>
+</div>
 
-        if(pressed){
-          longitude = (savedX - clientX) * 0.1 + savedLongitude;
-          latitude = (clientY - savedY) * 0.1 + savedLatitude;
-        }
-      }
+<div class="person">
+  <img class="avatar" src="images/michal.jpg">
+  <div class="name">Michal Stefanow</div>
+  <div class="title">Founding father</div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/stefek99/"><img src="images/linkedin.png"></a>
+    <a href="https://www.twitter.com/stefek99/"><img src="images/twitter.png"></a>
+  </div>
+</div>
 
-      function onDocumentMouseUp(event) {
-         pressed = false;
-         if (target === event.target && target.href) {
-           target.click();
-         }
-      }
+<div class="cf"></div>
 
-      window.addEventListener('resize', function(event){
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight; // http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera
-        camera.updateProjectionMatrix();
-      });
-      
-    </script>
+<h1>Ongoing ICO</h1>
+<p>
+  <div class="coin-container"><img class="coin" src="images/bitcoin-logo.png"></div>
+  BTC: <input disabled value="17zVA88xk4Ma7Cza4NXGYcP4Z1Qz7TUdzV" style="color: black; padding: 5px; width: 560px;">
+</p>
+<p>
+  <div class="coin-container"><img class="coin" src="images/ethereum-logo.png"></div>
+  ETH: <input disabled value="0x85A363699C6864248a6FfCA66e4a1A5cCf9f5567" style="color: black; padding: 5px; width: 560px;">
+</p>
+
+<p>We are in early days of the ICO so you need to excuse some rough edges.</p>
+<p>Acting with trust, honesty, integrity. Check my grandfather on Polish wikipedia: <a href="https://pl.wikipedia.org/wiki/Mieczys%C5%82aw_Stefan%C3%B3w">Mieczysław Stefanów</a></p>
+<p>Coming from the position of infinite prosperity and abundance, using resources that are already in place.</p>
+<p>There was never time in a human history offering such an opportunity...</p>
+<p>Join us, lets create this vision together.</p>
+
+<!--
+<h3>Additional links:</h3>
+<ul>
+  <li>simplified <a href="https://docs.google.com/document/d/1HUABmWcZ_Ca6_RJSX99PigRIp2QdCjMxMmA-NFW2oi0/edit#">terms and conditions</a></li>
+  <li><a href="https://astralship.org">astralship.org</a> - chapel we own</li>
+  <li><a href="https://astralship.org/ico">astralship.org/ico</a> - comprehensive research</li>
+  <li><a href="https://engedi2.org">Engedi 2.0</a> - another chapel we own</li>
+</ul>
+-->
+
+</div> <!-- box header -->
+
+<div class="box credits">
+    artwork by <a href="https://elohprojects.com/">Sean Allum</a><br>
+    <a onclick="toggleFullScreen()">fullscreen</a>
+    <a onclick="toggleText()">image</a>
+</div>
+
+
+<script src="lib/lightbox.min.js" type="text/javascript"></script>
+<script>
+  var lightbox = new Lightbox();
+  lightbox.load();
+</script>
+<script>
+  function toggleFullScreen() {
+    if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+     (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+      if (document.documentElement.requestFullScreen) {  
+        document.documentElement.requestFullScreen();  
+      } else if (document.documentElement.mozRequestFullScreen) {  
+        document.documentElement.mozRequestFullScreen();  
+      } else if (document.documentElement.webkitRequestFullScreen) {  
+        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+      }  
+    } else {  
+      if (document.cancelFullScreen) {  
+        document.cancelFullScreen();  
+      } else if (document.mozCancelFullScreen) {  
+        document.mozCancelFullScreen();  
+      } else if (document.webkitCancelFullScreen) {  
+        document.webkitCancelFullScreen();  
+      }  
+    }  
+    return false;
+  }    
+
+  function toggleText() {
+    if (document.getElementById("text").style.display  === "none") {
+      document.getElementById("text").style.display = "block";
+    } else {
+      document.getElementById("text").style.display = "none";
+    }
+    return false;
+  }
+  </script>
 
   </body>
 </html>
