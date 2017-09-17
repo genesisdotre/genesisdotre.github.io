@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>#SHA2017 genesis.re</title>
+    <title>genesis.re • astralship.org</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
     <style>
       body{
         margin: 0;
@@ -42,11 +43,11 @@
     }
 
     .border {
-      border: 2px solid white;
+      border: 5px solid white;
     }
 
     .border:hover {
-      border: 2px solid yellow;
+      border: 5px solid yellow;
     }
 
     header #close {
@@ -60,17 +61,17 @@
 
     <script src="three.min.js"></script> <!-- not providing CDN as some people have disabled 3rd party JS - kind of "tricky" - depending on what message you want to say with your code -->
 
-    <meta property="og:title" content="#SHA2017 genesis.re"/>
+    <meta property="og:title" content="genesis.re • astralship.org"/>
     <meta property="og:image" content="https://genesis.re/facebook-thumbnail.jpg"/>
-    <meta property="og:site_name" content="22-23-24 September co-creating the world’s first Global Solutions Day!"/>
+    <meta property="og:site_name" content="23 September co-creating the world’s first Global Solutions Day!"/>
     <meta property="og:description" content="Visit our astralship.org chapel."/>
 
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@genesisdotre">
     <meta name="twitter:creator" content="@stefek99">
-    <meta name="twitter:title" content="#SHA2017 genesis.re">
-    <meta name="twitter:description" content="22-23-24 September co-creating the world’s first Global Solutions Day! RT always appreciated 🦄">
+    <meta name="twitter:title" content="genesis.re • astralship.org">
+    <meta name="twitter:description" content="23 September co-creating the world’s first Global Solutions Day! RT always appreciated 🦄">
     <meta name="twitter:image" content="https://genesis.re/SHA2017-resized.jpg">
 
   </head>
@@ -88,16 +89,19 @@
 
     <header id="header">
 
-        genesis.re <a href="https://astralship.org">astralship.org</a><br>
+        genesis.re • <a href="https://astralship.org">astralship.org</a><br>
         <div style="height:10px"></div>
-        <a href="https://twitter.com/search?q=hackbase">#hackbase</a> <a href="https://twitter.com/search?q=coliving">#coliving</a><br>
+        <!-- <a href="https://twitter.com/search?q=coliving">#coliving</a> <a href="https://twitter.com/search?q=hackbase">#hackbase</a><br> -->
+        <!-- <div style="height:10px"></div> -->
+        <span style="font-size: 1.3em">Global Solutions Day</span><br>        
         <div style="height:10px"></div>
-        22-23-24 September 2017<br>
-        <div style="height:15px"></div>
-        <a style="padding: 10px;" class="border" href="https://astralship.org/equinox">astralship.org/equinox</a><br>
+        23 September 2017<br>
+        <div style="height:20px"></div>
+        <a style="padding: 10px; font-size: 1.3em" class="border" href="https://astralship.org/gsd">astralship.org/gsd</a><br>
 
         <div style="height:10px"></div>
-        <a style="font-size: 0.6em" href="https://twitter.com/intent/retweet?tweet_id=894447320447823873">retweet the tweet</a> 
+        <!-- <a style="font-size: 0.6em" href="https://twitter.com/intent/retweet?tweet_id=894447320447823873">retweet the tweet</a>  -->
+        <span style="font-size: 0.6em">open source on Github:</span> 
         <a style="font-size: 0.6em" href="https://github.com/genesisdotre/genesisdotre.github.io/issues">more awesome please</a>
 
     </header>
@@ -125,7 +129,7 @@
       var sphere = new THREE.SphereGeometry(100, 100, 40);
       sphere.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
       var sphereMaterial = new THREE.MeshBasicMaterial();
-      sphereMaterial.map = THREE.ImageUtils.loadTexture("SHA2017.jpg")
+      sphereMaterial.map = THREE.ImageUtils.loadTexture("https://i.imgur.com/yAKvmvs.jpg")
       var sphereMesh = new THREE.Mesh(sphere, sphereMaterial);
       scene.add(sphereMesh);
 
