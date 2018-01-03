@@ -1,3 +1,0 @@
-Thank you for stopping by...
-
-mstefanow@gmail.com
