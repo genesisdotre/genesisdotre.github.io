@@ -1,67 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>genesis.re • astralship.org</title>
+    <title>genesis.re • operating system for the planets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <style>
-      body{
-        margin: 0;
-      }
-      canvas{
-        width: 100%;
-        height: 100%
+
+      html { 
+        background: url(www/images/earth-background-resized.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
       }
 
-      header {
-        position: absolute;
-        top: 20px;
-        left: 20px;
+      body {
+        margin: 0;
+        color: white;
+        font-family: monospace;
+      }
+
+      .wrapper {
+        max-width: 500px;
+        margin: 0 auto;
         padding: 20px;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0,0,0,0.8);
+      }
+
+      .space {
         display: inline-block;
-        margin: 10px 0 0 10px;
+        width: 5px;
+      }
+
+      a {
         color: white;
         text-decoration: none;
-        font-size: 1.2em;
-        line-height: 1.5em;
-        font-family: sans-serif;
-        color: white;
-        font-weight: bold;
-    }
+        transition: all 1000ms ease-out;
+        border-bottom: 2px solid white;
+      }
 
-    header a {
-      color: white;
-      text-decoration: none;
-      transition: all 1000ms ease-out;
-      border-bottom: 3px solid white;
-    }
+      header a:hover {
+        color: yellow;
+        border-bottom: 2px solid yellow;
+      }
 
-    header a:hover {
-      color: yellow;
-      border-bottom: 3px solid yellow;
-    }
+      .clearfix:after {
+         content: " "; /* Older browser do not support empty content */
+         visibility: hidden;
+         display: block;
+         height: 0;
+         clear: both;
+      }
 
-    .border {
-      border: 5px solid white;
-    }
-
-    .border:hover {
-      border: 5px solid yellow;
-    }
-
-    header #close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 24px;
-      cursor: pointer;
-    }
     </style>
 
     <script src="three.min.js"></script> <!-- not providing CDN as some people have disabled 3rd party JS - kind of "tricky" - depending on what message you want to say with your code -->
 
-    <meta property="og:title" content="genesis.re • astralship.org"/>
+    <meta property="og:title" content="genesis.re • operating system for the planets"/>
     <meta property="og:image" content="https://genesis.re/facebook-thumbnail.jpg"/>
     <meta property="og:site_name" content="23 September co-creating the world’s first Global Solutions Day!"/>
     <meta property="og:description" content="Visit our astralship.org chapel."/>
@@ -70,136 +65,46 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@genesisdotre">
     <meta name="twitter:creator" content="@stefek99">
-    <meta name="twitter:title" content="genesis.re • astralship.org">
+    <meta name="twitter:title" content="genesis.re • operating system for the planets">
     <meta name="twitter:description" content="23 September co-creating the world’s first Global Solutions Day! RT always appreciated 🦄">
     <meta name="twitter:image" content="https://genesis.re/SHA2017-resized.jpg">
 
   </head>
   <body>
-    <noscript>
-      <h1>Please enable JavaScript.</h1>
-      <h3>There is a clever 360 image here.<h3>
-      <img src="https://genesis.re/noscript-background.jpg">
-      <style>
-        #header {display:none;}
-      </style>
-    </noscript>
 
-    <img src="https://genesis.re/SHA2017-resized.jpg" style="display:none"> <!-- micro hack for linters that scan for images -->
+    <div class="wrapper">
+      <h1>architecting the new world<br>
+          operating system for the planets</h1>
 
-    <header id="header">
 
-        Content lives on the wiki:
-        <div style="height:20px"></div>
-        <a style="padding: 10px; font-size: 1.3em" class="border" href="https://genesis.re/wiki">genesis.re/wiki</a><br>
+      <p>Democracy originates from ancient Greece.<br>
+      Current model of democracy is so 1800.<br>
+      Technology of horse and cart, mail pigeon,<br>
+      ship sailing US to UK in 20+ days.</p>
 
-        <div style="height:10px"></div>
-        <!-- <a style="font-size: 0.6em" href="https://twitter.com/intent/retweet?tweet_id=894447320447823873">retweet the tweet</a>  -->
-        <span style="font-size: 0.6em">open source on Github:</span> 
-        <a style="font-size: 0.6em" href="https://github.com/genesisdotre/genesisdotre.github.io/issues">more awesome please</a>
+      <p>Now we have internet, Facebook, iPhone, Bitcoin<br>
+      <i>(consensus protocol is much more than money)</i><br>
+      and Elon Musk making journey to Mars reality.<br>
 
-    </header>
+      <p>Regenerative ecosystems and systematic change:<br>
+      • <a href="https://en.wikipedia.org/wiki/Effective_altruism">Effective Altruism</a><br>
+      • <a href="https://en.wikipedia.org/wiki/Triple_bottom_line">Triple Bottom Line</a></p>
 
-    <script>
-      THREE.ImageUtils.crossOrigin = '';
-      
-      var manualControl = false;
-      var justReleased;
-      var justReleasedTimeout;
-      var longitude = 0;
-      var latitude = 0;
-      var savedX;
-      var savedY;
-      var savedLongitude;
-      var savedLatitude;
+      More on the wiki: <a style="font-size: 1.4em; font-weight: bold" href="https://genesis.re/wiki">genesis.re/wiki</a></p>
 
-      // some magic - scene, mesh, renderer, material, etc...
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
-      camera.target = new THREE.Vector3(0, 0, 0);
-      var sphere = new THREE.SphereGeometry(100, 100, 40);
-      sphere.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
-      var sphereMaterial = new THREE.MeshBasicMaterial();
-      sphereMaterial.map = THREE.ImageUtils.loadTexture("https://i.imgur.com/yAKvmvs.jpg")
-      var sphereMesh = new THREE.Mesh(sphere, sphereMaterial);
-      scene.add(sphereMesh);
+      <div>
+        <img src="www/images/blueface.jpg" height="80" style="float:left; margin-right: 15px">
 
-      document.addEventListener("mousedown", onDocumentMouseDown, false);
-      document.addEventListener("mousemove", onDocumentMouseMove, false);
-      document.addEventListener("mouseup", onDocumentMouseUp, false);      
+        <a href="mailto:email@genesis.re">email@genesis.re</a><br>
+        <a href="tel:+447586294279">+44<span class="space"></span>758<span class="space"></span>629<span class="space"></span>4279</a><br>
+        <a href="https://twitter.com/stefek99">@stefek99</a>
+        <div class="clearfix"></div>
 
-      // supporting touch events on mobile
-      document.addEventListener("touchstart", onDocumentMouseDown, false);
-      document.addEventListener("touchmove", onDocumentMouseMove, false);
-      document.addEventListener("touchend", onDocumentMouseUp, false);
-        
-      render();
-               
-      function render(){
-        requestAnimationFrame(render);
+      </div>
 
-        if (justReleased) {
-            return;
-        }
-        
-        if(!manualControl){
-          longitude += 0.1;
-        }
-
-        // limiting latitude (cannot point under your feet, better experience)
-        latitude = Math.max(-87, Math.min(87, latitude));
-        camera.target.x = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.cos(THREE.Math.degToRad(longitude));
-        camera.target.y = 500 * Math.cos(THREE.Math.degToRad(90 - latitude));
-        camera.target.z = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.sin(THREE.Math.degToRad(longitude));
-        camera.lookAt(camera.target);
-        renderer.render(scene, camera);    
-      }
-      
-      // when the mouse is pressed, we switch to manual control and save current coordinates
-      function onDocumentMouseDown(event){
-        if (event.target.id === "header") return false;
-        if (event.type.indexOf("touch") !== -1) { event = event.touches[0]; } // same event listener for both mouse and touch - using first touch
-
-        clearTimeout(justReleasedTimeout);
-        justReleased = false;
-        manualControl = true;
-        savedX = event.clientX;
-        savedY = event.clientY;
-        savedLongitude = longitude;
-        savedLatitude = latitude;
-      }
-
-      function onDocumentMouseMove(event){
-        if (event.target.id === "header") return false;
-        if (event.type.indexOf("touch") !== -1) { event = event.touches[0]; }
-
-        if(manualControl){
-          longitude = (savedX - event.clientX) * 0.1 + savedLongitude;
-          latitude = (event.clientY - savedY) * 0.1 + savedLatitude;
-        }
-      }
-
-      function onDocumentMouseUp(event) {
-        if (event.target.id === "header") return false; // still not ideal, hacky one at 05:22am
-
-        // it's better experience to wait 3 seconds before starting rotating again
-        justReleased = true;
-        manualControl = false;
-
-        justReleasedTimeout = setTimeout(function() {
-            justReleased = false;
-        }, 3000);
-      }
-
-      
-    </script>
+    </div>
 
     <script src="https://genesis.re/cmdctrl/cmdctrl.js"></script>
-
-
 
   </body>
 </html>
