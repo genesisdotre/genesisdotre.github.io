@@ -107,6 +107,24 @@ app.controller('ctrl', function($scope, $q) {
     });
 
     $scope.$apply();
+  });   
+
+  let guaranteedBidEvent = $scope.contract.GuaranteedBid({}, {fromBlock: 0, toBlock: 'latest'})
+  guaranteedBidEvent.get(function(error, events) {
+
+    console.log(events);
+
+    events.forEach(function(event) {
+      var bid = {
+        bidder: event.args.bidder,
+        value: +web3.fromWei( event.args.value.toNumber() ),
+        timestamp: event.args.timestamp.toNumber(),
+        tx: event.transactionHash
+      }
+      $scope.bids.push(bid);
+    });
+
+    $scope.$apply();
   });  
 
 
