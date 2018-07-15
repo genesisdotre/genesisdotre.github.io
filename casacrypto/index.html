@@ -69,10 +69,9 @@
           <strong>Deployed to <a href="https://https://ropsten.etherscan.io/address/{{ address }}#code">Ropsten</a> (testnet)</strong><br>
           <strong>Auction ends:</strong> {{ timestampEnd | amFromUnix | amDateFormat:'ddd, MMM Do YYYY, h:mm:ss a'}}<br>
           <strong>Starting price:</strong> {{ price.toFixed(2) }} ETH<br>
-          <strong>How many initially:</strong> {{ howMany + howManyGuaranteed }}<br>
-          <strong>How many left:</strong> {{ howMany }}<br>
+          <strong>How many initially for sale:</strong> {{ howMany + howManyGuaranteed }}<br>
+          <strong>How many left:</strong> {{ howMany }} ({{ guaranteedSold }} guaranteed sold) <br>
           <strong>How many guaranteed left:</strong> {{ howManyGuaranteed }}<br>
-          <strong>Guaranteed memberships sold:</strong> {{ guaranteedSold }}<br>
           <strong>Guaranteed price:</strong> {{ priceGuaranteed.toFixed(2) }} ETH<br>
 
           <strong>Follow Casa Crypto:</strong>&nbsp;&nbsp;
