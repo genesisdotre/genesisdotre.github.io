@@ -90,8 +90,8 @@
             </tr>
             <tr ng-repeat="account in accounts| orderBy:'bid':true">
               <td class="index">{{ $index + 1 }}.</td>
-              <td>{{ account.address }}</td>
-              <td class="micro">{{ account.bid.toFixed(2) }}</td>
+              <td>{{ account.bidder }}</td>
+              <td class="micro">{{ account.value.toFixed(2) }}</td>
             </tr>
           </table>        
 
@@ -104,8 +104,8 @@
             </tr>
             <tr ng-repeat="bid in guranteedBids">
               <td class="index">{{ $index + 1 }}.</td>
-              <td>{{ bid.address }}</td>
-              <td class="micro">{{ bid.bid.toFixed(2) }}</td>
+              <td>{{ bid.bidder }}</td>
+              <td class="micro">{{ bid.value.toFixed(2) }}</td>
             </tr>
           </table>   
 
@@ -124,7 +124,7 @@
               <tr ng-repeat="bid in bids">
                 <td class="index">{{ $index + 1 }}.</td>
                 <td>{{ bid.bidder }}</td>
-                <td class="micro">{{ bid.price.toFixed(2) }}</td>
+                <td class="micro">{{ bid.value.toFixed(2) }}</td>
                 <td class="timestamp"><span am-time-ago="bid.timestamp | amFromUnix"></span></td>
                 <td class="narrow"><a href="https://ropsten.etherscan.io/tx/{{ bid.tx }}" title="{{ bid.tx }}">{{ bid.tx }}</a></td>
           
@@ -143,7 +143,7 @@
               <tr ng-repeat="bid in refunds">
                 <td class="index">{{ $index + 1 }}.</td>
                 <td>{{ bid.bidder }}</td>
-                <td class="micro">{{ bid.price.toFixed(2) }}</td>
+                <td class="micro">{{ bid.value.toFixed(2) }}</td>
                 <td class="timestamp"><span am-time-ago="bid.timestamp | amFromUnix"></span></td>
                 <td class="narrow"><a href="https://ropsten.etherscan.io/tx/{{ bid.tx }}" title="{{ bid.tx }}">{{ bid.tx }}</a></td>
               </tr>
