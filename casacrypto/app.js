@@ -41,6 +41,10 @@ app.controller('ctrl', function($scope, $q) {
     $scope.howManyGuaranteed = res.toNumber();
   });    
 
+  $scope.contract.price.call(function(err, res) {
+    $scope.price = +web3.fromWei( res.toNumber() );
+  });    
+
   $scope.contract.priceGuaranteed.call(function(err, res) {
     $scope.priceGuaranteed = +web3.fromWei( res.toNumber() );
   });  

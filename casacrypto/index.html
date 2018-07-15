@@ -68,6 +68,7 @@
 
           <strong>Deployed to <a href="https://https://ropsten.etherscan.io/address/{{ address }}#code">Ropsten</a> (testnet)</strong><br>
           <strong>Auction ends:</strong> {{ timestampEnd | amFromUnix | amDateFormat:'ddd, MMM Do YYYY, h:mm:ss a'}}<br>
+          <strong>Starting price:</strong> {{ price.toFixed(2) }}<br>
           <strong>How many memberships auctioned:</strong> {{ howMany }}<br>
           <strong>How many guaranteed left:</strong> {{ howManyGuaranteed }}<br>
           <strong>Guaranteed memberships sold:</strong> {{ guaranteedSold }}<br>
