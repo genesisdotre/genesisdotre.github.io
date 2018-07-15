@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Casa Crypto membership auction</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="Casa Crypto membership auction"/>
+    <meta property="og:image" content="https://genesis.re/flower.jpg""/>
+    <meta property="og:site_name" content="_____________________"/>
+    <meta property="og:description" content="_____________________"/>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@michalstefanow">
+    <meta name="twitter:creator" content="@michalstefanow">
+    <meta name="twitter:title" content="Casa Crypto membership auction">
+    <meta name="twitter:description" content="_____________________">
+    <meta name="twitter:image" content="https://genesis.re/flower.jpg">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js" integrity="sha256-CutOzxCRucUsn6C6TcEYsauvvYilEniTXldPa6/wu0k=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- 
+      this may seem redundant, as Web3 can be injected by MetaMask BUT in case of no MetaMask no simple way including it, see also:
+        * https://stackoverflow.com/questions/8085111/how-to-include-a-remote-javascript-file-conditionally
+        * https://stackoverflow.com/questions/14783046/using-getscript-synchronously
+    -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+
+  </head>
+  <body ng-app="app" ng-controller="ctrl" ng-cloak>
+  
+      <div class="container">
+
+        <div class="warning" style="position: relative;" ng-show="warningShown">
+          <a href ng-click="warningShown = false" style="position: absolute; right: 10px; top: 10px;">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAy5pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDMwMiwgMjAxNy8wMy8wMi0xNjo1OTozOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIEVsZW1lbnRzIDE2LjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjUxNURGRDY4MDQwMTFFOEJFMzJFRkY4RERGRUE0QjciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjUxNURGRDc4MDQwMTFFOEJFMzJFRkY4RERGRUE0QjciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFQ0NCRjNGRjdGODQxMUU4QkUzMkVGRjhEREZFQTRCNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFQ0NCRjQwMDdGODQxMUU4QkUzMkVGRjhEREZFQTRCNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Prbh32MAAAMwSURBVHjatJdBaBNBFIa3RdSDBtM0paQkqESMYAxRkGouQgVBaAs99FBCpVjSkKSXlqRNIaUUizRKBQ9FL4KgF2/iURFEQQRBD6IXJWIsSTRpTCSFJk2eb5ZdmW52dmdNfPDlsPve/G8ms2/mdQj8dgA5j1xA3MgR5BDSgZSQb8gH5AXyCikKbbLDSBL5jgAnP5F15EQrwp1IHKkYEFZSRW4g+42K25FnLQgreWtkNVzI5zaKy+SQc3riDuSLHGQymcDj8YDVajUsaDabxdiuri76eR45xRLfgzyVnQcGBiCVSgGxQqEAgUCAW3xkZAQ2NjbE2Gw2C6Ojo/T7d4hJLYGY7GSxWCCdToPSYrGYrvjExAQ0Go1dceVyGZxOJ+13Syl+FCnIDv39/cCySCTCFCczrdVqqnHDw8O0bw05Sydwkx7I4XBAsVhkJhGNRlVnvrOzo+pPnnu9XmXMQ1mc/B9flQOSmWrZzMzMX1+/39+07LStrKyordgvadMLl1hLOj8/r5nE9PQ0jI2NMZed2NramtaeuUISuKa1qWZnZ5mDE+Ht7W3m+9XVVb1Ne48k8FhvZ2sl0YI44bUgfZfQziSSySRvzUgJ0g9XwOTkpK74wsKCkYr5o9PICbW1tdUWH8rIXUJ4z5Pt1NQU1Ot1rr8gkUjwrgD5/IUneo7BYNDwJuRM4g1J4Pq/zpxUOFb140ziPkngMsuBFBoti8fj4impVQWXl5e1ErhKEjCr3fdIbdeyxcXFXaukl6iK+G/pYivabfplX18f5PN5Q7MKh8NM/2q1Cm63WxnziP4cjkuHg+5xPDc3p3kXYO2XoaEh2reO+JTfZEJ26OnpgUwm0zTI0tKS7s4OhUJNcVgbwOVy0X7rakVhH/JSdhocHIRcLicOUKlUdh2/eoyPj8Pm5qYYWyqVxJWh3n9ELKzKdIzekN3d3eDz+cButxu+lPb29oqxNpuNfl5W3oTUzIuk/8O1nLRqF3lrtFM6KtslTpb9tNHuaK9UJastCDeQu8jBVnpE0lLdkZoKXmHSLT9AznAdh5xmkVpzwknEJrXsgtTAktbrk9SeP0cyPIP+EWAAVXjbz6miuFkAAAAASUVORK5CYII=">  
+          </a>
+
+          <span style="padding-right: 36px; display: block;">Bitcoin, Cryptocurrencies, Ethereum, Smart Contracts are all in the early days of adoption.</span>
+          <br>
+          This is an experimental software and while every effort was made to ensure it works "just fine", there might be some rought edges.
+          <br><br>
+          Get the code on <a href="https://github.com/genesisdotre/ethereum-auction">GitHub</a>, 
+          verify the source on <a href="https://https://ropsten.etherscan.io/address/{{ address }}#code">Etherscan</a>.
+          <br>
+          Clone the repo, run the Truffle tests.
+          <br><br>
+          Currently it is deployed to testnet <i>(Ropsten)</i> where you can play with test ETH <i>(monopoly money)</i>.
+          <br><br>
+          The same contract at the same address is deployed to the mainnet <i>(real ETH, real money)</i> - safety measures in place, you are in good hands 😎
+        </div>
+
+        <span ng-show="$root.ropsten">
+          <h3>{{ description }}</h3>
+
+          <h3><input readonly="" class="address" value="{{ address }}"></h3>
+          
+          <h4>Summary of the auction:</h4>
+
+          <strong>Deployed to <a href="https://https://ropsten.etherscan.io/address/{{ address }}#code">Ropsten</a> (testnet)</strong><br>
+          <strong>Auction ends:</strong> {{ timestampEnd | amFromUnix | amDateFormat:'ddd, MMM Do YYYY, h:mm:ss a'}}<br>
+          <strong>How many memberships auctioned:</strong> {{ howMany }}<br>
+          <strong>How many guaranteed left:</strong> {{ howManyGuaranteed }}<br>
+          <strong>Guaranteed memberships sold:</strong> {{ guaranteedSold }}<br>
+          <strong>Guaranteed price:</strong> {{ priceGuaranteed.toFixed(2) }} ETH<br>
+
+          <strong>Follow Casa Crypto:</strong>&nbsp;&nbsp;
+          
+          <a href="https://www.instagram.com/casacrypto/"><i class="fab fa-instagram"></i></a>&nbsp;&nbsp;
+          <a href="https://t.me/CasaCryptoIbiza"><i class="fab fa-telegram-plane"></i></a>&nbsp;&nbsp;
+          <a href="http://bit.ly/casacrypto"><i class="far fa-file-pdf"></i></a>
+        
+        
+
+          <h4>Current bids</h4>
+          <table class="table table-sm table-bordered">
+            <tr>
+              <th class="index"></th>
+              <th>account</th>
+              <th class="micro">bid</th>
+            </tr>
+            <tr ng-repeat="account in accounts| orderBy:'bid':true">
+              <td class="index">{{ $index + 1 }}.</td>
+              <td>{{ account.address }}</td>
+              <td class="micro">{{ account.bid.toFixed(2) }}</td>
+            </tr>
+          </table>        
+
+          <h4>Guaranteed bids</h4>
+          <table class="table table-sm table-bordered">
+            <tr>
+              <th class="index"></th>
+              <th>account</th>
+              <th class="micro">bid</th>
+            </tr>
+            <tr ng-repeat="bid in guranteedBids">
+              <td class="index">{{ $index + 1 }}.</td>
+              <td>{{ bid.address }}</td>
+              <td class="micro">{{ bid.bid.toFixed(2) }}</td>
+            </tr>
+          </table>   
+
+          <span ng-show="$root.metamask">
+
+            <h4>All the incoming transactions</h4>
+            <p style="margin-bottom: 0">Includes multiple bids from the same account and bids already refunded (withdrawn)</p> 
+            <table class="table table-sm table-bordered">
+              <tr>
+                <th class="index"></th>
+                <th>account</th>
+                <th class="micro">bid</th>
+                <th class="timestamp">timestamp</th>
+                <th class="narrow">tx</th>
+              </tr>
+              <tr ng-repeat="bid in bids">
+                <td class="index">{{ $index + 1 }}.</td>
+                <td>{{ bid.bidder }}</td>
+                <td class="micro">{{ bid.price.toFixed(2) }}</td>
+                <td class="timestamp"><span am-time-ago="bid.timestamp | amFromUnix"></span></td>
+                <td class="narrow"><a href="https://ropsten.etherscan.io/tx/{{ bid.tx }}" title="{{ bid.tx }}">{{ bid.tx }}</a></td>
+          
+              </tr>
+            </table>          
+
+            <h4>Refunds (witdrawn)</h4>
+            <table class="table table-sm table-bordered">
+              <tr>
+                <th class="index"></th>
+                <th>account</th>
+                <th class="micro">bid</th>
+                <th class="timestamp">timestamp</th>
+                <th class="narrow">tx</th>
+              </tr>
+              <tr ng-repeat="bid in refunds">
+                <td class="index">{{ $index + 1 }}.</td>
+                <td>{{ bid.bidder }}</td>
+                <td class="micro">{{ bid.price.toFixed(2) }}</td>
+                <td class="timestamp"><span am-time-ago="bid.timestamp | amFromUnix"></span></td>
+                <td class="narrow"><a href="https://ropsten.etherscan.io/tx/{{ bid.tx }}" title="{{ bid.tx }}">{{ bid.tx }}</a></td>
+              </tr>
+            </table>
+          </span>
+
+          <span ng-show="! $root.metamask">
+            <h3>Metamask required to obtain more data</h3>
+            <p>See <a href="https://github.com/INFURA/infura/issues/13#issuecomment-405077145">this</a> and <a href="https://github.com/INFURA/infura/issues/73#issuecomment-405078968">that</a> GitHub issue. I'm not the smartest, not the most experienced Ethereum programmer on this planet and I've wasted (invested) enough time trying to get it to work. Just install <a href="https://metamask.io/">MetaMask</a> babe for full functionality, can you imagine, we are still in technology early days, internet in 1996.</p>
+            <img src="images/metamask.jpg">
+          </span>
+        </span>
+        <span ng-show="! $root.ropsten">
+          <h1 style="font-family: monospace; font-weight: bold; border: 5px solid black; padding: 10px;margin-top: .5rem">please switch to the Ropsten testnet</h1>
+          <img src="images/metamask.jpg" style="border: 5px solid gray; width: 100%; max-width: 100%;">
+        </span>
+
+        <span style="font-size: 0.6em">
+          <br>
+          <strong>About me and this site</strong><br>
+          <p>My name is not important, I have many names. You check my personal website <a href="https://michalstefanow.com">MichalStefanow.com</a>. Realised that traditional model of employment does not work, created <a href="https://astralship.org">astralship.org</a> - forward thinking coliving and coworking space in an old church in the UK. </p>
+          <p><a href="https://genesis.re">genesis.re</a> - beginning, source, origin. As Elon Musk is making journey to Mars a reality, the important question to ask - same democracy as in ancient Greece or maybe we can use some modern technology?</p>
+          <p>While some people are crypto rich, I'm rich in other terms - health is new wealth, time is new money. <a href="https://steemit.com/cafcass/@osdivorce/legal-fiction-thought-police-getting-ready-for-final-hearing-21st-aug-2018">Open source divorce on the blockchain</a> consumes a lot of resources and now I'm heavily investing into skills and education.</p>
+          <p>Back in 2017 I didn't know how to deploy my own ICO contract, now I'm getting more proficient with coding Ethereum and the smart contract here was initially created to auction places on the technical workshop. Same mechanism can be used for auctioning membership to an exclusive villa.</p>
+          <p>My ideal role would involve working along side other impact entrepreneurs while utilising my technical skills, here is my <a href="https://docs.google.com/document/d/1iFO_mhmsErnZMzy56Y8WTqciK_uMu-fUOS5k8pqUoaY/edit?usp=sharing">Crypto CV on Google Docs</a>. I can talk with computers and real humans, apologies in advance if some of my views are considered controversial - not trying to please evryone and their dog, instead manifesting highest vibration and long-lasting meaningful positive impact.</p>
+          <!-- <p>I also do some yoga and other shananigans: <a href="https://hackeryoga.com">hackeryoga.com</a> -->
+        </span>
+
+      </div>
+    </div>
+
+     <script src="app.js"></script>
+
+     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  </body>
+</html>
+
