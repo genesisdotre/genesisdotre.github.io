@@ -152,9 +152,9 @@
                 <td class="narrow"><a href="https://etherscan.io/tx/{{ bid.tx }}" title="{{ bid.tx }}">{{ bid.tx }}</a></td>
               </tr>
             </table>
+            <p ng-hide="refunds.length > 0" class="none">None as of now.</p>
           </span>
-          <p ng-hide="refunds.length > 0" class="none">None as of now.</p>
-
+          
           <span ng-show="! $root.metamask">
             <h3>Metamask required to obtain more data</h3>
             <p>See <a href="https://github.com/INFURA/infura/issues/13#issuecomment-405077145">this</a> and <a href="https://github.com/INFURA/infura/issues/73#issuecomment-405078968">that</a> GitHub issue. I'm not the smartest, not the most experienced Ethereum programmer on this planet and I've wasted (invested) enough time trying to get it to work. Just install <a href="https://metamask.io/">MetaMask</a> babe for full functionality, can you imagine, we are still in technology early days, internet in 1996.</p>
