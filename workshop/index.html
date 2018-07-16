@@ -9,16 +9,16 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" /> <!-- custom favicon for folder: https://stackoverflow.com/questions/6644684/do-you-have-to-include-link-rel-icon-href-favicon-ico-type-image-x-icon -->
 
     <meta property="og:title" content="Ethereum coding workshop"/>
-    <meta property="og:image" content="https://genesis.re/flower.jpg""/>
-    <meta property="og:site_name" content="_____________________"/>
-    <meta property="og:description" content="_____________________"/>
+    <meta property="og:image" content="https://genesis.re/workshop/images/youtube-cover-JPG.jpg"/>
+    <meta property="og:site_name" content="0x38189698a366fe0C4911e8e86a60B3253072C372"/>
+    <meta property="og:description" content="Past couple of months I've been heavily investing into skills and education, this is the type of training I would like to receive - no nonsense, practical tips, useful knowledge allowing you to get started."/>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@michalstefanow">
     <meta name="twitter:creator" content="@michalstefanow">
     <meta name="twitter:title" content="Ethereum coding workshop">
-    <meta name="twitter:description" content="_____________________">
-    <meta name="twitter:image" content="https://genesis.re/flower.jpg">
+    <meta name="twitter:description" content="Past couple of months I've been heavily investing into skills and education, this is the type of training I would like to receive - no nonsense, practical tips, useful knowledge allowing you to get started. 0x38189698a366fe0C4911e8e86a60B3253072C372">
+    <meta name="twitter:image" content="https://genesis.re/workshop/images/youtube-cover-JPG.jpg">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -68,8 +68,35 @@
 
           <h3><input readonly="" class="address" value="{{ address }}"></h3>
 
-          <p>Looking at <a href="https://burningman.org/">Burning Man</a>, 24<sup>th</sup> and 25<sup>th</sup> are the most convenient dates for the in-person live human-2-human (H2H) workshop in London. Past couple of months I've been heavily investing into skills and education, this is the type of training I would like to receive - no nonsense, practical tips, useful knowledge allowing you to get started.</p>
+          <p>Looking at <a href="https://burningman.org/">Burning Man</a>, August 24<sup>th</sup> and 25<sup>th</sup> are the most convenient dates for the in-person live human-2-human (H2H) workshop in London. Past couple of months I've been heavily investing into skills and education, this is the type of training I would like to receive - no nonsense, practical tips, useful knowledge allowing you to get started.</p>
           
+          <h4>Personal invitation</h4>
+
+          <style>
+            .videoWrapperWrapper {
+              max-width: 600px;
+            }
+            .videoWrapper {
+              position: relative;
+              padding-bottom: 56.25%; /* 16:9 */
+              padding-top: 25px;
+              height: 0;
+            }
+            .videoWrapper iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          </style>
+
+          <div class="videoWrapperWrapper">
+            <div class="videoWrapper">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/IyJWObsRhwE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+
           <h4>Summary of the auction:</h4>
 
           <strong>Deployed to <a href="https://etherscan.io/address/{{ address }}#code">mainnet</a></strong> (real ETH)<br>
@@ -85,7 +112,7 @@
           <a href="mailto:email@genesis.re">email@genesis.re</a>
 
           <h4>Current bids</h4>
-          <table class="table table-sm table-bordered bids" ng-show="account.length > 0">
+          <table class="table table-sm table-bordered bids" ng-show="accounts.length > 0">
             <tr>
               <th class="index"></th>
               <th>account</th>
@@ -97,7 +124,7 @@
               <td class="micro">{{ account.value.toFixed(2) }}</td>
             </tr>
           </table>
-          <p ng-hide="account.length > 0" class="none">None as of now.</p> 
+          <p ng-hide="accounts.length > 0" class="none">None as of now.</p> 
 
           <h4>Guaranteed bids</h4>
           <table class="table table-sm table-bordered" ng-show="guranteedBids.length > 0">
