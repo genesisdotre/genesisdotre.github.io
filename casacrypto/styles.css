@@ -64,6 +64,6 @@ td.timestamp, th.timestamp {
     color: white;
 }
 
-table.bids tr:nth-of-type(5) {
+table.bids tr:nth-of-type(5):not(:last-of-type) {
   border-bottom: 2px solid red;
 }
