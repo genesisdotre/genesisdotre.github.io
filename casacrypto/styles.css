@@ -63,3 +63,7 @@ td.timestamp, th.timestamp {
     background-color: black;
     color: white;
 }
+
+table.bids tr:nth-of-type(5) {
+  border-bottom: 2px solid red;
+}
