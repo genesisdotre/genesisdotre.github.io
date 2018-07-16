@@ -67,13 +67,15 @@
           <h3>{{ description }}</h3>
 
           <h3><input readonly="" class="address" value="{{ address }}"></h3>
+
+          <p>Looking at <a href="https://burningman.org/">Burning Man</a>, 24<sup>th</sup> and 25<sup>th</sup> are the most convenient dates for the in-person live human-2-human (H2H) workshop in London. Past couple of months I've been heavily investing into skills and education, this is the type of training I would like to receive - no nonsense, practical tips, useful knowledge allowing you to get started.</p>
           
           <h4>Summary of the auction:</h4>
 
           <strong>Deployed to <a href="https://etherscan.io/address/{{ address }}#code">mainnet</a></strong> (real ETH)<br>
           <strong>Auction ends:</strong> {{ timestampEnd | amFromUnix | amDateFormat:'ddd, MMM Do YYYY, h:mm:ss a'}}<br>
           <strong>Starting price:</strong> {{ price.toFixed(2) }} ETH<br>
-          <strong>How many initially for sale:</strong> {{ howMany + howManyGuaranteed }}<br>
+          <strong>How many initially for sale:</strong> {{ howMany + guaranteedSold }}<br>
           <strong>How many left:</strong> {{ howMany }} ({{ guaranteedSold }} guaranteed sold) <br>
           <strong>How many guaranteed left:</strong> {{ howManyGuaranteed }}<br>
           <strong>Guaranteed price:</strong> {{ priceGuaranteed.toFixed(2) }} ETH<br>
