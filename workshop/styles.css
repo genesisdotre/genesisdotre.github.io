@@ -1,0 +1,69 @@
+html { 
+  background: url(images/ethereum.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background-color: transparent; /* overriding unwanted stuff */
+}
+
+.container {
+  background-color: rgba(255,255,255,0.9);
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+h4 {
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+table {
+  border: 2px solid grey !important;
+  table-layout: fixed;
+}
+
+td, th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td.index, th.index {
+  width: 30px;
+}
+
+td.micro, th.micro {
+  width: 50px;
+}
+
+td.narrow, th.narrow {
+  width: 100px;
+}
+
+td.timestamp, th.timestamp {
+  width: 125px;
+}
+
+.warning {
+  background-color: yellow;
+  border: 5px solid red;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.address {
+    font-family: monospace;
+    width: 425px;
+    padding: 8px;
+    max-width: calc(100vw - 30px);
+    font-size: 12pt;
+    background-color: black;
+    color: white;
+}
+
+table.bids tr:nth-of-type(5):not(:last-of-type) {
+  border-bottom: 2px solid red;
+}
