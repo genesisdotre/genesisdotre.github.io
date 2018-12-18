@@ -7,31 +7,30 @@
 
 
   </head>
-  <body ng-app="app" ng-controller="ctrl">
+  <body ng-app="app" ng-controller="ctrl" class="container">
 
     <h1>Decrypt</h1>
-    Password: <input ng-model='passwordDecrypt'><br>
+    <label>password</label><br>
+    <input ng-model='password'><br>
 
-    <label>encrypted</label>
-    <textarea ng-model="cyphertext" ng-change="decrypt()"></textarea><br>
+    <label>encrypted</label><br>
+    <textarea ng-model="cyphertext" ng-change="decrypt()" rows=6 cols=80></textarea><br>
 
-    <label>decrypted</label>
-    <textarea ng-model="decrypted" readonly></textarea><br>
-
-    <label>actual Message</label>
-    <textarea ng-model="actual" readonly></textarea><br>
+    <label>decrypted</label><br>
+    <textarea ng-model="actual" readonly rows=6 cols=80></textarea><br>
 
     <button ng-click="decrypt()">decrypt</button>
 
 
     <h1>Encrypt</h1>
-    Password: <input ng-model='passwordEncrypt'><br>
+    <label>password</label><br>
+    <input ng-model='password'><br>
 
-    <label>plaintext</label>
-    <textarea ng-model="plaintext" ng-change="encrypt()"></textarea><br>
+    <label>plaintext</label><br>
+    <textarea ng-model="plaintext" ng-change="encrypt()" rows=6 cols=80></textarea><br>
 
-    <label>encrypted</label>
-    <textarea ng-model="encrypted" readonly></textarea><br>
+    <label>encrypted</label><br>
+    <textarea ng-model="encrypted" readonly rows=6 cols=80></textarea><br>
 
     <button ng-click="encrypt()">encrypt</button>
 
@@ -44,15 +43,15 @@
 
       app.controller("ctrl", function($scope) {
         $scope.cyphertext = "U2FsdGVkX18ZUVvShFSES21qHsQEqZXMxQ9zgHy+bu0=";
-        $scope.passwordDecrypt = "Secret Passphrase";
+        $scope.password = "Secret Passphrase";
 
         $scope.decrypt = function() {
-          $scope.decrypted = CryptoJS.AES.decrypt($scope.cyphertext, $scope.passwordDecrypt);
+          $scope.decrypted = CryptoJS.AES.decrypt($scope.cyphertext, $scope.password);
           $scope.actual = $scope.decrypted.toString(CryptoJS.enc.Utf8);
         }        
 
         $scope.encrypt = function() {
-          $scope.encrypted = CryptoJS.AES.encrypt($scope.plaintext, $scope.passwordEncrypt);
+          $scope.encrypted = CryptoJS.AES.encrypt($scope.plaintext, $scope.password);
           $scope.actual = $scope.decrypted.toString(CryptoJS.enc.Utf8);
         }
       });
