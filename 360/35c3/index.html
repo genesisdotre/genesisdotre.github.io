@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#astralship #35c3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body{
+        margin: 0;
+      }
+      canvas{
+        width: 100%;
+        height: 100%
+      }
+    </style>
+
+    <link rel="stylesheet" href="loader/iosOverlay.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/83/three.min.js"></script> <!-- https://github.com/mrdoob/three.js/issues/12313 -->
+    <script src="loader/iosOverlay.js"></script>
+    <script src="loader/spin.min.js"></script>
+
+    <meta property="og:title" content="#astralship #35c3"/>
+    <meta property="og:image" content="https://genesis.re/360/35c3/preview.jpg"/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@theastralshippho">
+    <meta name="twitter:creator" content="@marsxrobertson">
+    <meta name="twitter:title" content="#astralship #35c3">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://genesis.re/360/35c3/preview.jpg">
+
+  </head>
+  <body>
+
+
+    <script>
+
+      var overlay = function(){
+        var _overlay;
+        var _state; // when loading set to laoding, timeout after 10s
+
+        var success = function() {
+          _overlay = iosOverlay({
+            text: "Success!",
+            duration: 2e3,
+            icon: "loader/check.png"
+          });
+        };
+
+        var error = function() {
+          if (_overlay) {
+            _overlay.hide(); // Loading leading to an error...
+          }
+
+          _overlay = iosOverlay({
+            text: "Error!",
+            duration: 2e3,
+            icon: "loader/cross.png"
+          });
+        };
+
+        var loading = function(text) {
+          if (!text) {
+            text = "Loading";
+          }
+
+          var opts = {
+            lines: 13, // The number of lines to draw
+            length: 11, // The length of each line
+            width: 5, // The line thickness
+            radius: 17, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            color: '#FFF', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: 'auto', // Top position relative to parent in px
+            left: 'auto' // Left position relative to parent in px
+          };
+          var target = document.createElement("div");
+          document.body.appendChild(target);
+          var spinner = new Spinner(opts).spin(target);
+
+          var duration = 222222;
+          _state = "loading";
+
+          _overlay = iosOverlay({
+            text: text,
+            duration: duration,
+            spinner: spinner
+          });
+
+          setTimeout(function() {
+            if (_state === "loading") {
+              _overlay.update({
+                text: "Taking long time...",
+                icon: "loader/cross.png"
+              });
+            }
+          }, duration - 2000); // duration is set up already...
+        };
+
+        var update = function(text) {
+          if (! _overlay) {
+            console.error("Please make sure iosOverlay is instantiated by previous calls");
+            return;
+          }
+          
+          _overlay.update({
+            text: text,
+          });
+        }
+
+        var hide = function() {
+          _overlay.hide();
+          _state = null;
+        };
+
+        return {
+          success : success,
+          error : error,
+          loading : loading,
+          hide : hide,
+          update : update
+        };
+      }();
+
+      //////////////////////////////
+
+      THREE.ImageUtils.crossOrigin = '';
+      
+      var manualControl = false;
+      var justReleased;
+      var justReleasedTimeout;
+      var longitude = 0;
+      var latitude = 0;
+      var savedX;
+      var savedY;
+      var savedLongitude;
+      var savedLatitude;
+
+      // some magic - scene, mesh, renderer, material, etc...
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth - 4, window.innerHeight - 4); // micro hack to avoid scrollbars
+      document.body.appendChild(renderer.domElement);
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.target = new THREE.Vector3(0, 0, 0);
+      var sphere = new THREE.SphereGeometry(100, 100, 40);
+      sphere.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
+      var sphereMaterial = new THREE.MeshBasicMaterial();
+
+
+      var onLoad = function() {
+        overlay.hide();
+      };
+
+      var onProgress = function ( xhr ) {
+        console.log("onProgress");
+
+        if ( xhr.lengthComputable ) {
+          var percentComplete = Math.round(xhr.loaded / xhr.total * 100, 2) + "%";
+          overlay.update(percentComplete);
+          console.log(percentComplete);
+        }
+      };
+
+      overlay.loading();
+      var loader = new THREE.TextureLoader();
+      var texture = loader.load("https://i.imgur.com/u6n3UWp.jpg", onLoad, onProgress);
+      sphereMaterial.map = texture;
+
+
+      var sphereMesh = new THREE.Mesh(sphere, sphereMaterial);
+      scene.add(sphereMesh);
+      document.addEventListener("mousedown", onDocumentMouseDown, false);
+      document.addEventListener("mousemove", onDocumentMouseMove, false);
+      document.addEventListener("mouseup", onDocumentMouseUp, false);      
+
+      // supporting touch events on mobile
+      document.addEventListener("touchstart", onDocumentMouseDown, false);
+      document.addEventListener("touchmove", onDocumentMouseMove, false);
+      document.addEventListener("touchend", onDocumentMouseUp, false);
+        
+      render();
+               
+      function render(){
+        requestAnimationFrame(render);
+
+        if (justReleased) {
+            return;
+        }
+        
+        if(!manualControl){
+          longitude += 0.1;
+        }
+
+        // limiting latitude (cannot point under your feet, better experience)
+        latitude = Math.max(-87, Math.min(87, latitude));
+        camera.target.x = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.cos(THREE.Math.degToRad(longitude));
+        camera.target.y = 500 * Math.cos(THREE.Math.degToRad(90 - latitude));
+        camera.target.z = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.sin(THREE.Math.degToRad(longitude));
+        camera.lookAt(camera.target);
+        renderer.render(scene, camera);    
+      }
+      
+      // when the mouse is pressed, we switch to manual control and save current coordinates
+      function onDocumentMouseDown(event){
+        if (event.target.id === "header") return false;
+        if (event.type.indexOf("touch") !== -1) { event = event.touches[0]; } // same event listener for both mouse and touch - using first touch
+
+        clearTimeout(justReleasedTimeout);
+        justReleased = false;
+        manualControl = true;
+        savedX = event.clientX;
+        savedY = event.clientY;
+        savedLongitude = longitude;
+        savedLatitude = latitude;
+      }
+
+      function onDocumentMouseMove(event){
+        if (event.target.id === "header") return false;
+        if (event.type.indexOf("touch") !== -1) { event = event.touches[0]; }
+
+        if(manualControl){
+          longitude = (savedX - event.clientX) * 0.1 + savedLongitude;
+          latitude = (event.clientY - savedY) * 0.1 + savedLatitude;
+        }
+      }
+
+      function onDocumentMouseUp(event) {
+        if (event.target.id === "header") return false; // still not ideal, hacky one at 05:22am
+
+        // it's better experience to wait 3 seconds before starting rotating again
+        justReleased = true;
+        manualControl = false;
+
+        justReleasedTimeout = setTimeout(function() {
+            justReleased = false;
+        }, 3000);
+      }
+
+      // https://developer.mozilla.org/en-US/docs/Web/Events/resize
+      (function() {
+
+        window.addEventListener("resize", resizeThrottler, false);
+
+        var resizeTimeout;
+        function resizeThrottler() {
+          // ignore resize events as long as an actualResizeHandler execution is in the queue
+          if ( !resizeTimeout ) {
+            resizeTimeout = setTimeout(function() {
+              resizeTimeout = null;
+              actualResizeHandler();
+           
+             // The actualResizeHandler will execute at a rate of 15fps
+             }, 200);
+          }
+        }
+
+        function actualResizeHandler() {
+          renderer.setSize(window.innerWidth - 4, window.innerHeight - 4);
+          var preservingTarget = new THREE.Vector3(camera.target.x, camera.target.y, camera.target.z); 
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+          camera.target = preservingTarget;
+        }
+
+      }());
+    </script>
+
+
+  </body>
+
+</html>
