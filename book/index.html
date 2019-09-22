@@ -22,10 +22,16 @@
 
       .wrapper {
         max-width: 670px;
-        margin: 80px auto; /* TODO: align middle */
+        margin: 80px auto;
         padding: 20px;
         background: rgba(0,0,0,0.85);
         box-shadow: 0px 0px 30px 10px #ffffff;
+      }
+
+      @media only screen and (max-width: 690px) {
+         .wrapper {
+           margin: 15px;
+         }
       }
 
       a {
