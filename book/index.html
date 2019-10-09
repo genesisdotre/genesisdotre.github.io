@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <style>
+
+      @font-face {
+        font-family: "FucXed";
+        font-style: normal;
+        font-weight: normal;
+        src: url("fucxedcaps-2-webfont.woff2") format("woff2"), url("fucxedcaps-2-webfont.woff") format("woff");
+        font-display: swap; 
+      }
+
       html { 
-        background: url(hothot.png) no-repeat center center fixed; 
+        background: url(background.jpg) no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -21,14 +30,14 @@
       }
 
       .wrapper {
-        max-width: 670px;
+        max-width: 700px;
         margin: 80px auto;
         padding: 20px;
-        background: rgba(0,0,0,0.85);
+        background: rgba(45, 121, 181);
         box-shadow: 0px 0px 30px 10px #ffffff;
       }
 
-      @media only screen and (max-width: 690px) {
+      @media only screen and (max-width: 800px) {
          .wrapper {
            margin: 15px;
          }
@@ -61,22 +70,15 @@
         color: yellow;
       }
 
-
-      /*https://stackoverflow.com/questions/17838607/making-an-iframe-responsive*/
-      .iframe-container {
-        overflow: hidden;
-        padding-top: 56.25%;
-        position: relative;
-      } 
-
-      .iframe-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border: 0;
-        width: 100%;
-        height: 100%;
+      .header-title {
+        font-family: "FucXed", sans-serif;
+        font-size: 50px;
       }
+      .header-title span {
+        font-size: 25px;
+      }
+
+
     </style>
 
     <meta property="og:title" content="System Change - Actionable Policies to Handle Climate Emergency"/>
@@ -95,26 +97,7 @@
 
     <div class="wrapper">
 
-      <h1>System Change - Actionable Policies to Handle Climate Emergency</h1>
-
-      <!-- <img src="kindle.png"> -->
-
-      <!-- <p>Architecting a New World - Operating System for the Planet(s)</p> -->
-<style>
-  li { margin-bottom: 10px }
-</style>
-
-<p>
-  These are the three most important points:
-  <ol>
-    <li>Land use. Food system. Less crops to feed livestock. Rebuilding soil and natural ecosystems.</li>
-    <li>Emissions Trading System. No more free allowances. Unified global standard supported by enforceable sanctions.</li>
-    <li>Energy storage and transmission. You can install solar panels but it will not reduce the dependency on fossil fuels - we are using peaker plants to supply electricity during peak demand.</li>
-  </ol>
-  The book covers many other things and many interdependencies in more details.
-</p>
-
-
+      <h1 class="header-title">System Change<br><span>Actionable Policies to Handle Climate Emergency</span></h1>
 
       <p>
         <a class="thelink" href="https://archive.org/download/system-change-actionable-policies-to-handle-climate-emergency/System%20Change%20-%20Actionable%20Policies%20to%20Handle%20Climate%20Emergency.pdf">PDF on archive.org</a>
@@ -127,6 +110,19 @@
         <a class="thelink" href="https://amzn.to/2mI3iNJ">Amazon Kindle</a>
       </p>
 
+<style>
+  li { margin-bottom: 10px }
+</style>
+
+<p>
+  Probably the most impactful points:
+  <ol>
+    <li>Land use. Food system. Less crops to feed livestock. Rebuilding soil and natural ecosystems.</li>
+    <li>Emissions Trading System. No more free allowances. Unified global standard supported by enforceable sanctions.</li>
+    <li>Energy storage and transmission. You can install solar panels but it will not reduce the dependency on fossil fuels - we are using peaker plants to supply electricity during peak demand.</li>
+  </ol>
+  The book covers many other things and many interdependencies in more details.
+</p>
 
 
     
@@ -165,10 +161,10 @@
 
       <p>
         Contact me anytime: <a href="mailto:email@genesis.re">email@genesis.re</a><br>
-        Follow me on Twitter: <a href="https://twitter.com/marsxRobertson">marsXrobertson</a>
+        Follow me on Twitter: <a href="https://twitter.com/marsXrobertson">@marsXrobertson</a>
       </p>
 
-      <img src="System Change - Actionable Policies to Handle Climate Emergency.jpg">
+      <img src="globe.png">
     
 
     </div>
