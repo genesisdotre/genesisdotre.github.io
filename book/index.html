@@ -15,11 +15,7 @@
       }
 
       html { 
-        background: url(background.jpg) no-repeat center center fixed; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+        background-color: black;
       }
 
       body {
@@ -33,8 +29,14 @@
         max-width: 700px;
         margin: 80px auto;
         padding: 20px;
-        background: rgba(45, 121, 181);
         box-shadow: 0px 0px 30px 10px #ffffff;
+        border-radius: 10px;
+
+        background: url(background.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
       }
 
       @media only screen and (max-width: 800px) {
@@ -61,21 +63,21 @@
       .thelink {
         padding: 15px; 
         font-weight: bold;
-        border: 2px solid white;
+        border: 3px solid white;
         text-decoration: underline;
         display: inline-block;
       }
       .thelink:hover {
-        border: 2px solid yellow;
-        color: yellow;
+        border: 3px solid #FF561F;
+        color: #FF561F;
       }
 
-      .header-title {
+      .title {
         font-family: "FucXed", sans-serif;
-        font-size: 50px;
-      }
-      .header-title span {
         font-size: 25px;
+      }
+      .title .big {
+        font-size: 50px;
       }
 
 
@@ -97,7 +99,7 @@
 
     <div class="wrapper">
 
-      <h1 class="header-title">System Change<br><span>Actionable Policies to Handle Climate Emergency</span></h1>
+      <h1 class="title"><span class="big">System Change</span><br>Actionable Policies to Handle Climate Emergency</h1>
 
       <p>
         <a class="thelink" href="https://archive.org/download/system-change-actionable-policies-to-handle-climate-emergency/System%20Change%20-%20Actionable%20Policies%20to%20Handle%20Climate%20Emergency.pdf">PDF on archive.org</a>
@@ -110,12 +112,21 @@
         <a class="thelink" href="https://amzn.to/2mI3iNJ">Amazon Kindle</a>
       </p>
 
+      <div class="title">Information always wants to be free. Please share it widely</div>
+
+      <br>
+
+      <img src="globe.png">
+
+      
+
 <style>
   li { margin-bottom: 10px }
 </style>
 
 <p>
-  Probably the most impactful points:
+  <div class="title">Artitecting Earth 2.0</div>
+  Many things will have to change, these are the most impactful and critical points, attainable right now:
   <ol>
     <li>Land use. Food system. Less crops to feed livestock. Rebuilding soil and natural ecosystems.</li>
     <li>Emissions Trading System. No more free allowances. Unified global standard supported by enforceable sanctions.</li>
@@ -164,7 +175,7 @@
         Follow me on Twitter: <a href="https://twitter.com/marsXrobertson">@marsXrobertson</a>
       </p>
 
-      <img src="globe.png">
+      
     
 
     </div>
