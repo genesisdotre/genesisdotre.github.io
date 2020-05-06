@@ -42,7 +42,6 @@
     p {
       font-family: sans-serif;
       line-height:1.7;
-      margin:20px;
     }
 
   video::-webkit-media-controls {
@@ -77,21 +76,13 @@ a {
   color: white;
 }
 
-.videoWrapper {
-		position:relative;
-		padding-bottom:56.25%;
-		padding-top:30px;
-		height:0;
-		overflow:hidden;
-	}
+.embed-container { 
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; 
+}
 
-	.videoWrapper iframe, .videoWrapper object, .videoWrapper embed {
-		position:absolute;
-		top:0;
-		left:0;
-		width:100%;
-		height:100%;
-	}
+.embed-container iframe, .embed-container object, .embed-container embed { 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+}
 
 </style>
 
@@ -120,13 +111,11 @@ a {
   <h1>London Real Citizen Science</h1>
   <p>Not into conspiracy theories, let's see what science says?</p>
 
+
   <div style="max-width: 560px">
-    <div class="videoWrapper">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/vkCOZiqOhBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- 
- </div>
- </div>
- 
+    <div class='embed-container'><iframe src='https://www.youtube.com/embed/vkCOZiqOhBM' frameborder='0' allowfullscreen></iframe></div>
+  </div>
+
   <p>Share this page: <a href="https://genesis.re/citizenscience">genesis.re/citizenscience</a></p>
   <p>Ethereum address: <strong><code><a href="ethereum:0x0000000ed9aa4172a16c4f8178961ea6dcb6aac9">0x0000000ed9aa4172a16c4f8178961ea6dcb6aac9</a></code></strong></p>
   <p>Experiment design: <a href="https://londonreal.github.io/citizen-science/">londonreal.github.io/citizen-science/</a></p>
