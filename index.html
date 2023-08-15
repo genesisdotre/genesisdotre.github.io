@@ -186,7 +186,7 @@
 
       <!-- <img width=250 src="genesis-qr-code.png"> -->
 
-      <p>Current price: <div id="loadingBar">.....</div>   <span id="currentPrice"></span></p>
+      <p>Current price: <span id="loadingBar">.....</span>   <span id="currentPrice"></span></p>
 
       <p>Each purchase increases the price by 0.1%</p>
 
@@ -451,7 +451,7 @@
           let GENESIS = new ethers.Contract(GENESIS_ADDRESS, GENESIS_ABI, provider);
           let currentPrice = ethers.utils.formatEther(await GENESIS.currentPrice());
 
-          document.getElementById("currentPrice").textContent = ("" + currentPrice + "ETH");
+          document.getElementById("currentPrice").textContent = ("" + currentPrice + " ETH");
 
           console.log("Current price: " + currentPrice + " ETH");
 
