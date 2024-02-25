@@ -14,13 +14,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 	// On page load, we create a PaymentIntent on the server so that we have its clientSecret to
 	// initialize the instance of Elements below. The PaymentIntent settings configure which payment
 	// method types to display in the PaymentElement.
+
 	const {
 		error: backendError,
 		clientSecret,
 		amount,
-	} = await fetch(`${backendEndpoint}create-payment-intent`).then((r) =>
-		r.json()
-	);
+	} = await fetch(
+		`${backendEndpoint}create-${
+			window.location.hash === "#testing" ? "test" : "payment"
+		}-intent`
+	).then((r) => r.json());
 
 	const appearance = {
 		theme: "night",
@@ -38,7 +41,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const costAmountElement = document.getElementById("cost-nft");
 
 	// Assign the value to the element
-	costAmountElement.textContent = `${amount} €`;
+	costAmountElement.textContent = `${amount} € ${
+		window.location.hash === "#testing" ? "TESTING ONLY" : ""
+	}`;
 	// Initialize Stripe Elements with the PaymentIntent's clientSecret,
 	// then mount the payment element.
 	const elements = stripe.elements({ clientSecret, appearance });
