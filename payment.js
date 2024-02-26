@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-	const backendEndpoint = "http://localhost:4242/";
+	const backendEndpoint = "https://basex-backend-64986ca9d266.herokuapp.com/";
 	const { publishableKey } = await fetch(`${backendEndpoint}config`).then((r) =>
 		r.json()
 	);
