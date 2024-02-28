@@ -257,7 +257,7 @@
       <p>The passport will be sent later on...</p>
 
       <button class="buy-button" @click="showModal = true">Buy now</button>
-      <div x-show="showModal"  class="modal active">
+      <div x-show="showModal"  class="modal" x-bind:class="showModal?'active':''">
                  <div style="text-align: center; display: flex;gap: 15px;flex-direction: column;">
                     <div>
                         <p>Buy Genesis Passport NFT</p>
@@ -274,7 +274,7 @@
                     </form>
                 </div>
       </div>
-      <div x-show="showModal" class="overlay active" @click="showModal = false"></div>
+      <div x-show="showModal" class="overlay" x-bind:class="showModal?'active':''" @click="showModal = false"></div>
 
       <!-- <br>
       <button class="golden-btn" style="font-size:1.6em; font-weight: bold;" id="buynow">Buy now</button>
