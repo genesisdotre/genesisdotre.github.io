@@ -143,7 +143,10 @@
   width: 100%;
   height: 100%;
 }
-
+.blockOverflow {
+  overflow-y: hidden;
+  max-height:75vh;
+}
 .salesinfo {
   max-height: 0; 
   overflow: hidden;
@@ -183,9 +186,29 @@
 
   </head>
   <body>
-
+    
     <!-- TODO: on mobile resize gently the font size so it fits into a single line -->
-    <div class="wrapper" x-data="{ showModal: false }">
+    <div  x-data="{ showModal: false }">
+        <div x-show="showModal"  class="modal" x-bind:class="showModal?'active':''">
+                 <div style="text-align: center; display: flex;gap: 15px;flex-direction: column;">
+                    <div>
+                        <p>Buy Genesis Passport NFT</p>
+                    <p id="cost-nft"></p>
+                    </div>
+                    <form id="payment-form">
+                        <div id="link-authentication-element">
+                         </div>
+                        <div id="payment-element">
+                        </div>
+                        <button id="submit" class="buy-button" style="margin-top:15px; padding:4px 35px">Buy now</button>
+                        <div id="error-message">
+                        </div>
+                    </form>
+                </div>
+      </div>
+      <div x-show="showModal" class="overlay" x-bind:class="showModal?'active':''" @click="showModal = false"></div>
+
+         <div class="wrapper" x-bind:class="showModal?'blockOverflow':''">
 
 <!--       <div style="border: 2px solid white; padding: 14px;">
         <h1 style="margin-top:0px">Current focus: <a href="https://mailhustle.com">mailhustle.com</a></h1>
@@ -263,25 +286,7 @@
       <p>The NFT passport will be sent later on.</p>
 
       <button class="buy-button" @click="showModal = true">Buy now</button>
-      <div x-show="showModal"  class="modal" x-bind:class="showModal?'active':''">
-                 <div style="text-align: center; display: flex;gap: 15px;flex-direction: column;">
-                    <div>
-                        <p>Buy Genesis Passport NFT</p>
-                    <p id="cost-nft"></p>
-                    </div>
-                    <form id="payment-form">
-                        <div id="link-authentication-element">
-                         </div>
-                        <div id="payment-element">
-                        </div>
-                        <button id="submit" class="buy-button" style="margin-top:15px; padding:4px 35px">Buy now</button>
-                        <div id="error-message">
-                        </div>
-                    </form>
-                </div>
-      </div>
-      <div x-show="showModal" class="overlay" x-bind:class="showModal?'active':''" @click="showModal = false"></div>
-
+      
       <p>Each purchase increases the price by 0.1%</p>
 
       <p>Not implausible that the number will go up?</p>
@@ -525,6 +530,7 @@
 
       </div>
 
+    </div>
     </div>
 </div>
 
