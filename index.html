@@ -22,13 +22,19 @@
       }
 
       .buy-button {
-        border:1.7px solid white;
+        border:2px solid white;
         color:white;
-         padding:4px 20px;
+         padding:15px;
           background-color: #0000005d;
           font-family: monospace;
-          font-size: 1.5rem;
-          transition: background-color 0.3s;
+        cursor: pointer;
+        font-weight: bold;
+        transition: border-color color 0.3s ease;
+
+      }
+      .buy-button:hover {
+        border-color: orange;
+        color: orange
       }
       .buy-button:disabled {
         opacity: 0.7;
@@ -172,18 +178,6 @@
     <meta name="twitter:image" content="https://genesis.re/preview.jpg">
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- FUCK THAT SHIT, NO TRACKING -->
-<!--     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103804182-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-103804182-1');
-    </script> -->
-
-
   </head>
   <body>
     
@@ -215,7 +209,7 @@
           
           <h3 style="margin-bottom: 10px; font-size: 20px">Mission vision manifesto</h3>
           
-          <p>Check our <a href="Network-State-Genesis-WHITEPAPER-compressed.pdf">founding document</a> (PDF, 36 pages, loads of images)</p>
+          <p>Check our <a href="Network-State-Genesis-WHITEPAPER-compressed.pdf">founding document</a> (PDF, 36 pages but loads of images)</p>
           
           <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Benefits</h3>
           
@@ -224,14 +218,16 @@
           <p>Become a member of the <a href="https://PlanetaryCouncil.org">Planetary Council</a>.</p>
           
           <p>Become a citizen of the Network State Genesis.</p>
+
+          <p>Consider yourself Revolutionary Changemaker.</p>
           
-          <p>Be one of the first 1000 citizens to receive physical passport in 1st batch, currently we are digital collectible only.</p>
+          <p>Be one of the first 1000 citizens to receive physical passport in the 1st batch.  (currently we are digital collectible only)</p>
           
           <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Option 1: purchase with card 💳</h3>
           
           <p>At a later stage you'll be asked to provide your Ethereum address.</p>
           
-          <button class="buy-button" @click="showModal = true">Buy now</button>
+          <button class="buy-button" @click="showModal = true">Buy now 💳</button>
           
           <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Option 2: purchase with ETH</h3>
           
@@ -239,7 +235,7 @@
           
           <br>
           
-          Ethereum: <code style="padding: 15px; border: 1px solid white;">0x3EF61d25b2Bf303DE52efdd5e50698BED8f9eB8d</code>
+          Ethereum: <code style="padding: 15px; border: 2px solid white;">0x3EF61d25b2Bf303DE52efdd5e50698BED8f9eB8d</code>
           
           <br>
           <br>
@@ -251,9 +247,9 @@
           
           <p>Current price: <span id="loadingBar">.....</span>   <span id="currentPrice"></span></p>
           
-          <p>Each purchase increases the price by 0.1%, there is a chance that the number will go up?</p>
+          <p>Each purchase increases the price by 0.1% (it may or may not go up)</p>
           
-          <p>No requirement to send the exact amount, easier to round it up than to type the exact digits, and you'll automatically receive a refund. Only the current price will be paid, as guaranteed by the smart contract.</p>
+          <p>No requirement to send the exact amount, easier to round it up than to type the exact digits. You'll automatically receive a refund, only the current price will be paid.</p>
           
           <h3 style="margin-bottom: 10px; margin-top: 35px; font-size: 25px">Technical details</h3>
           
