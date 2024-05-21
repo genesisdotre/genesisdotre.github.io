@@ -127,7 +127,7 @@
       <div class="wrapper">
           <h1 style="margin-bottom: 10px; font-size: 25px">Network State Genesis - Passport NFT</h1>
 
-          <p>Multiplanery<br>Extraterrestrial<br>Intergalactic<br>Hyperdimensional<br>From the future...</p>
+          <p>Multiplanery<br><br>Extraterrestrial<br><br>Intergalactic<br><br>Hyperdimensional<br><br>From the future 💫</p>
           
           <img src="Network-State-Genesis-PASSPORT-LATEST.jpg" style="max-width: 100%; border: 1px solid white;">
           
@@ -144,10 +144,19 @@
           
           <p>Become a member of the <a href="https://PlanetaryCouncil.org">Planetary Council</a>.</p>
 
-          <p>Become an agent of change, one of the first 1000 citizens to receive physical passport in the 1st batch.  (currently we are digital collectible only)</p>
+          <p>Become an agent of change.</p>
           
-          <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Option 2: purchase with ETH</h3>
+          <p>Receive the physical passport in the 1st batch.</p>
           
+          <p>(currently we are digital collectible only)</p>
+          
+          <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Currently we are crypto native</h3>
+      
+          <p>Using Ethereum blockchain.</p>
+
+          <!-- <button id="v1Button" onclick="selectNetwork('ethereum')">V1 Ethereum</button>
+          <button id="v2Button" onclick="selectNetwork('arbitrum')">V2 Arbitrum</button> -->
+
           <p>In order to purchase please send ETH to the following address.</p>
           
           <br>
@@ -163,14 +172,14 @@
           <br><br>
           
           <p>Current price: <span id="loadingBar">.....</span>   <span id="currentPrice"></span></p>
-          
-          <p>Each purchase automatically increases the price of the next one.</p>
-          
-          <p>No requirement to send the exact amount, easier to round it up than to type the exact digits. You'll automatically receive a refund, only the actual price will be paid.</p>
 
-          <p>Use a wallet that you own <i>(not an exchange)</i>, <a href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet">MetaMask should be OK</a>.</p>
+          <p>Each purchase automatically increases the price by 0.1% </p>
+
+          <p>Warning about warning, not great for user experience 🤷‍♀️</p>
+
+          <img src="metamask-warning.png" height="300">
           
-          <p>Read more on <a href="https://basex.notion.site/Network-State-Genesis-04647a9c605747f2bf5a320ab1a1bafa?pvs=4">Notion wiki</a>.</p>
+          <p>For more technical bits and explaination read more in the <a href="https://basex.notion.site/Network-State-Genesis-04647a9c605747f2bf5a320ab1a1bafa?pvs=4">docs</a>.</p>
 
         <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Connect with Mars</h3>
         
@@ -209,6 +218,7 @@
             "type": "function"
       }];
       
+      let priceLoadedSuccessfully = false;
       async function getCurrentPrice() {
         try {
           const network = "homestead";
@@ -219,8 +229,13 @@
           let GENESIS = new ethers.Contract(GENESIS_ADDRESS, GENESIS_ABI_SIMPLIFIED, provider);
           let currentPrice = ethers.utils.formatEther(await GENESIS.currentPrice());
 
+          if(priceLoadedSuccessfully) { // aready after timeout, do not want to confuse the user with changing prices
+            return;
+          }
+
           document.getElementById("currentPrice").textContent = ("" + currentPrice + " ETH");
           document.getElementById('loadingBar').style.display = 'none';
+          priceLoadedSuccessfully = true;
         } catch(err) {
           console.log(err);
         }
@@ -241,6 +256,14 @@
           setTimeout(updateLoadingBar, 250);
       }
       updateLoadingBar();
+
+      setTimeout(() => {
+        if (!priceLoadedSuccessfully) {
+          document.getElementById('loadingBar').style.display = 'none';
+          document.getElementById("currentPrice").textContent = "0.075 ETH";
+          priceLoadedSuccessfully = true;
+        }
+      }, 10000); // 10 seconds, if price not loaded, just guess the amount
 
 
     </script>
