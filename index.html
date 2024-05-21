@@ -21,63 +21,6 @@
         font-size: 1.1em;
       }
 
-      .buy-button {
-        border:2px solid white;
-        color:white;
-         padding:15px;
-          background-color: #0000005d;
-          font-family: monospace;
-        cursor: pointer;
-        font-weight: bold;
-        transition: border-color color 0.3s ease;
-
-      }
-      .buy-button:hover {
-        border-color: orange;
-        color: orange
-      }
-      .buy-button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-}
-      #cost-nft {
-        margin:5px 0 0 0;
-        font-size: 30px;
-        font-weight: bold;
-      }
-      .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 88vw;
-            max-width: 450px;
-            transform: translate(-50%, -50%);
-            background-color: #00000056;
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border:1.7px solid white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-
-        /* Overlay styling */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-        }
-
-        /* Show modal and overlay when modal is active */
-        .modal.active, .overlay.active {
-            display: block;
-        }
       .wrapper {
         width: 600px;
         max-width: 80vw;
@@ -181,53 +124,27 @@
   </head>
   <body>
     
-    <!-- TODO: on mobile resize gently the font size so it fits into a single line -->
-    <div  x-data="{ showModal: false }">
-        <div x-show="showModal"  class="modal" x-bind:class="showModal?'active':''">
-                 <div style="text-align: center; display: flex;gap: 15px;flex-direction: column;">
-                    <div>
-                        <p>Buy Genesis Passport NFT</p>
-                    <p id="cost-nft"></p>
-                    </div>
-                    <form id="payment-form">
-                        <div id="link-authentication-element">
-                         </div>
-                        <div id="payment-element">
-                        </div>
-                        <button id="submit" class="buy-button" style="margin-top:15px; padding:4px 35px">Buy now</button>
-                        <div id="error-message">
-                        </div>
-                    </form>
-                </div>
-      </div>
-      <div x-show="showModal" class="overlay" x-bind:class="showModal?'active':''" @click="showModal = false"></div>
-
-        <div class="wrapper" x-bind:class="showModal?'blockOverflow':''">
+      <div class="wrapper">
           <h1 style="margin-bottom: 10px; font-size: 25px">Network State Genesis - Passport NFT</h1>
+
+          <p>Multiplanery<br>Extraterrestrial<br>Intergalactic<br>Hyperdimensional<br>From the future...</p>
           
           <img src="Network-State-Genesis-PASSPORT-LATEST.jpg" style="max-width: 100%; border: 1px solid white;">
           
           <h3 style="margin-bottom: 10px; font-size: 20px">Mission vision manifesto</h3>
           
-          <p>Check our <a href="Network-State-Genesis-WHITEPAPER-compressed.pdf">founding document</a> (PDF, 36 pages but loads of images)</p>
+          <p>Check our <a href="Network-State-Genesis-WHITEPAPER-compressed.pdf">founding document</a> (2021)</p>
+          <p>Check our <a href="Network-State-Genesis-WHITEPAPER-V2.pdf">V2 update</a> (2024)</p>
           
           <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Benefits</h3>
           
-          <p>Join us and shape the future of planetary governance.</p>
+          <p>Join us and shape the future of (multi)planetary governance.</p>
+
+          <p>Become a citizen of the Network State Genesis.</p>
           
           <p>Become a member of the <a href="https://PlanetaryCouncil.org">Planetary Council</a>.</p>
-          
-          <p>Become a citizen of the Network State Genesis.</p>
 
-          <p>Consider yourself Revolutionary Changemaker.</p>
-          
-          <p>Be one of the first 1000 citizens to receive physical passport in the 1st batch.  (currently we are digital collectible only)</p>
-          
-          <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Option 1: purchase with card 💳</h3>
-          
-          <p>At a later stage you'll be asked to provide your Ethereum address.</p>
-          
-          <button class="buy-button" @click="showModal = true">Buy now 💳</button>
+          <p>Become an agent of change, one of the first 1000 citizens to receive physical passport in the 1st batch.  (currently we are digital collectible only)</p>
           
           <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Option 2: purchase with ETH</h3>
           
@@ -247,22 +164,18 @@
           
           <p>Current price: <span id="loadingBar">.....</span>   <span id="currentPrice"></span></p>
           
-          <p>Each purchase increases the price by 0.1% (it may or may not go up)</p>
+          <p>Each purchase automatically increases the price of the next one.</p>
           
-          <p>No requirement to send the exact amount, easier to round it up than to type the exact digits. You'll automatically receive a refund, only the current price will be paid.</p>
-          
-          <h3 style="margin-bottom: 10px; margin-top: 35px; font-size: 25px">Technical details</h3>
-          
-          <p>Source on <a href="https://etherscan.io/address/0x3ef61d25b2bf303de52efdd5e50698bed8f9eb8d#code">Etherscan.</a></p>
-          
-          <p>Source code on <a href="https://github.com/genesisdotre/network-state-genesis">GitHub</a>.</a></p>
-          
-          <p>Use a wallet that you own <i>(not an exchange)</i>, <a href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet">MetaMask should be OK</a>.</p>
+          <p>No requirement to send the exact amount, easier to round it up than to type the exact digits. You'll automatically receive a refund, only the actual price will be paid.</p>
 
+          <p>Use a wallet that you own <i>(not an exchange)</i>, <a href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet">MetaMask should be OK</a>.</p>
+          
+          <p>Read more on <a href="https://basex.notion.site/Network-State-Genesis-04647a9c605747f2bf5a320ab1a1bafa?pvs=4">Notion wiki</a>.</p>
+
+        <h3 style="margin-bottom: 10px; margin-top:35px; font-size: 20px">Connect with Mars</h3>
+        
         <img src="marsrobertson.jpg" height="90" style="float:left; margin-right: 15px">
 
-        <strong>Mars Robertson 💫</strong><br>
-        <!-- Chief Integration Officer<br> -->
         <br>
         <a href="https://twitter.com/marsXrobertson">@marsXRobertson</a> on Twitter<br>
         <!-- <a href="mailto:email@genesis.re">email@genesis.re</a><br>
@@ -275,82 +188,60 @@
 
       </div> <!-- wrapper ends-->
 
-    </div>
-
 </div>
 
     <script src="https://genesis.re/cmdctrl/cmdctrl.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
     <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js" type="text/javascript"></script> 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="/payment.js"></script>
+
     <script>
       GENESIS_ADDRESS = "0x3ef61d25b2bf303de52efdd5e50698bed8f9eb8d";
-      GENESIS_ABI=[{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"address payable","name":"_multisig","type":"address"},{"internalType":"address","name":"_WBTCaddress","type":"address"},{"internalType":"uint256","name":"_cutoffTimestamp","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"addr","type":"address"}],"name":"FreeClaim","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"IPFShash","type":"string"},{"indexed":false,"internalType":"address","name":"author","type":"address"}],"name":"MessagePosted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"addr","type":"address"},{"indexed":true,"internalType":"uint256","name":"currentSerialNumber","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"price","type":"uint256"},{"indexed":false,"internalType":"bool","name":"BTC","type":"bool"}],"name":"Purchase","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"GENESIS","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"WBTCaddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"currentPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"currentSerialNumber","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"cutoffTimestamp","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"divisor","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeClaim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"addr","type":"address"}],"name":"getMessagesLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"messages","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"multiplier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"multisig","outputs":[{"internalType":"address payable","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"IPFShash","type":"string"}],"name":"publishMessage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"purchase","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"purchaseWithWBTC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"registrationTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"IPFSURI","type":"string"}],"name":"setGenesis","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"URI","type":"string"}],"name":"setTokenURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
+      GENESIS_ABI_SIMPLIFIED = [{
+            "inputs": [],
+            "name": "currentPrice",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      }];
       
       async function getCurrentPrice() {
         try {
           const network = "homestead";
-
           const provider = ethers.getDefaultProvider(network, {
               infura: "b002d089dde541d88fd64753f4b10ea5",
           });
 
-          let GENESIS = new ethers.Contract(GENESIS_ADDRESS, GENESIS_ABI, provider);
+          let GENESIS = new ethers.Contract(GENESIS_ADDRESS, GENESIS_ABI_SIMPLIFIED, provider);
           let currentPrice = ethers.utils.formatEther(await GENESIS.currentPrice());
 
           document.getElementById("currentPrice").textContent = ("" + currentPrice + " ETH");
-
-          console.log("Current price: " + currentPrice + " ETH");
-
           document.getElementById('loadingBar').style.display = 'none';
         } catch(err) {
           console.log(err);
         }
-
       }
 
       getCurrentPrice();
 
       let loadingBarElement = document.getElementById('loadingBar');
       let dotCount = 0;
-
       function updateLoadingBar() {
           let loadingText = '';
-
-          // Filled dots
           for (let i = 0; i < dotCount; i++) {
               loadingText += '.';
           }
-
-          // Empty spaces
-          for (let i = dotCount; i < 5; i++) {
-              loadingText += ' ';
-          }
-
           loadingBarElement.textContent = loadingText;
-
-          // Increase the dot count
           dotCount++;
-
-          if (dotCount <= 5) {
-              setTimeout(updateLoadingBar, 250); // Call this function again after 0.25 second
-          }
+          dotCount = (dotCount > 5) ? 0 : dotCount;
+          setTimeout(updateLoadingBar, 250);
       }
-
-      // Start the loading process
       updateLoadingBar();
 
-      // $(function() {
-
-      //   $("#buynow").click(function() {
-      //     console.log("button clicked");
-
-      //     $(".salesinfo").addClass("open");
-      //   })
-
-      // })
 
     </script>
 
