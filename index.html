@@ -152,7 +152,23 @@
       
             <p>Please send ETH to the following address on the Ethereum mainnet:</p>
             <br>
-            <code style="padding: 15px; border: 2px solid white;">0x3EF61d25b2Bf303DE52efdd5e50698BED8f9eB8d</code>
+           <div
+  style="display: flex; align-items: center; gap: 8px; padding: 10px; border: 2px solid white; border-radius: 5px; font-size: 0.9em;"
+>
+  <code
+    id="full-address"
+    style="cursor: pointer; user-select: all;"
+    onclick="selectAddress()"
+  >
+    <span id="display-address">0x3EF61d...eB8d</span>
+  </code>
+  <button
+    onclick="copyAddress()"
+    style="background-color: #333; color: white; padding: 4px 8px; border-radius: 4px; border: none; font-size: 0.8em; cursor: pointer; margin-left: auto;"
+  >
+    Copy
+  </button>
+</div>
             <br>
             <br>
             <br>
@@ -160,7 +176,8 @@
             <br>
             <p>Current price: <span id="loadingBar">.....</span>   <span id="currentPrice"></span></p>
             <p>Warning about warning, it is safe to proceed:</p>
-            <img src="metamask-warning.png" height="300">
+            <img src="metamask-warning.png" style="max-width: 100%; height: auto;">
+
 
           
           <p>For more technical info read more in the <a href="https://basex.notion.site/Network-State-Genesis-04647a9c605747f2bf5a320ab1a1bafa?pvs=4">docs</a>.</p>
@@ -187,7 +204,36 @@
 
     <script src="https://genesis.re/cmdctrl/cmdctrl.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.4.umd.min.js" type="text/javascript"></script> 
+<script>
+  const fullAddress = "0x3EF61d25b2Bf303DE52efdd5e50698BED8f9eB8d";
+  const displayAddress = document.getElementById("display-address");
 
+  // Initialize display based on current window width
+  function updateAddressDisplay() {
+    if (window.innerWidth <= 480) {
+      displayAddress.innerText = "0x3EF61d...eB8d";
+    } else {
+      displayAddress.innerText = fullAddress;
+    }
+  }
+
+  function copyAddress() {
+    navigator.clipboard.writeText(fullAddress).then(() => {
+      alert("Address copied to clipboard!");
+    });
+  }
+
+  function selectAddress() {
+    const range = document.createRange();
+    range.selectNode(document.getElementById("full-address"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+
+  // Set display on load and update on resize
+  updateAddressDisplay();
+  window.addEventListener("resize", updateAddressDisplay);
+</script>
     <script>
       GENESIS_ADDRESS = "0x3ef61d25b2bf303de52efdd5e50698bed8f9eb8d";
       GENESIS_ABI_SIMPLIFIED = [{
